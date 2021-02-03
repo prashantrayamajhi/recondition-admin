@@ -1,11 +1,10 @@
-import Button from '@material-ui/core/Button'
-
+import Navbar from './Navbar/Navbar'
+import { BrowserRouter as Router } from 'react-router-dom'
 function App() {
   return (
-    <div>
-      <h1>App</h1>
-      <Button variant="contained" color="primary">Click Me</Button>
-    </div>
+    <Router>
+      <Navbar />
+    </Router>
   )
 }
 
