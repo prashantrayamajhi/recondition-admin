@@ -24,9 +24,7 @@ export default function AddUser() {
   return (
     <Container>
       <form autoComplete='false' onSubmit={onFormSubmit}>
-        <Typography color='primary'>
-          <h2>Add User</h2>
-        </Typography>
+        <Typography className='heading' color='primary' variant='h2'>Add User</Typography>
         <div className='input-wrapper'>
           <TextField className='input' label='Name' id="outlined-basic" variant="outlined" value={name} onChange={(e) => { handleInputChange(setName, e.target.value as string) }}/>
         </div>
