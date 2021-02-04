@@ -24,9 +24,7 @@ export default function AddProduct() {
   return (
     <Container>
       <form autoComplete='off' onSubmit={onFormSubmit}>
-        <Typography color='primary'>
-          <h2>Add Product</h2>
-        </Typography>
+        <Typography className='heading' color='primary' variant='h2'>Add Product</Typography>
         <div className='input-wrapper'>
           <TextField className='input' label='Name' id="outlined-basic" variant="outlined" value={name} onChange={(e) => { handleInputChange(setName, e.target.value as string) }}/>
         </div>

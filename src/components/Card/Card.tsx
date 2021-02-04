@@ -13,12 +13,13 @@ import { Link } from 'react-router-dom'
 interface card {
     image : string,
     title : String,
-    price : String
+    price : String,
+    key: Number
 }
 
 export default function CardComponent(cardObj : card) {
   return (
-    <Card className='card-wrapper'>
+    <Card className='card-wrapper' key={cardObj.image}>
       <CardActionArea>
         <CardMedia
           className='img'
