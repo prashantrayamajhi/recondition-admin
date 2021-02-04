@@ -1,0 +1,54 @@
+.add-product {
+  padding: 0.7rem 3rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+.products-wrapper {
+  padding: 3rem;
+  padding-top: 1rem;
+  display: grid;
+  grid-gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-content: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
+  h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    margin-top: -2rem;
+  }
+  .input-wrapper {
+    width: 100%;
+    margin-bottom: 2.3rem;
+    .input {
+      width: 100%;
+      font-size: 1rem;
+      &.description {
+        padding: 0.5rem;
+      }
+    }
+  }
+  .btn-wrapper {
+    text-align: end;
+    .btn {
+      width: 30% !important;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  form {
+    .btn-wrapper {
+      text-align: center;
+      .btn {
+        width: 50% !important;
+      }
+    }
+  }
+}
