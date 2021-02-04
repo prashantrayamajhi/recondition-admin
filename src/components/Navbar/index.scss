@@ -4,7 +4,7 @@
       text-decoration: none;
       .link-btn {
         color: white;
-        padding: 0 1.5rem !important;
+        padding: 1rem 1.5rem !important;
         text-transform: capitalize;
         font-size: 0.9rem;
         font-weight: 400 !important;
@@ -19,8 +19,8 @@
 @media (max-width: 800px) {
   .navbar {
     position: relative;
-    z-index: 1000;
     .link-wrapper {
+      z-index: 1;
       position: absolute;
       right: -100%;
       top: 0;
@@ -35,9 +35,6 @@
       animation-name: nav;
       animation-direction: alternate !important ;
       animation-duration: 1s;
-      &.menu {
-        background-color: black;
-      }
       .link {
         display: block;
         border-bottom: 1px solid lightgrey;
@@ -52,6 +49,7 @@
     }
     .menu {
       display: block !important;
+      z-index: 1000;
     }
     @keyframes nav {
       0% {
