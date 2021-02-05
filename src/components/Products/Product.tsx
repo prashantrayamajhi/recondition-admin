@@ -1,9 +1,10 @@
 import './index.scss'
-
+import Navbar from './../Navbar/Navbar'
 export default function Product() {
   return (
-    <div>
+    <>
+      <Navbar />
       <h1>Single Product</h1>
-    </div>
+    </>
   )
 }

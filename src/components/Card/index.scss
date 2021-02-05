@@ -14,7 +14,16 @@
   .action-wrapper {
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     gap: 1rem;
+    .action-btn {
+      width: 100%;
+      font-size: 0.7rem !important;
+      .icon {
+        font-size: 1.1rem !important;
+        margin-right: 0.2rem;
+      }
+    }
     .link {
       text-decoration: none;
       width: 100%;

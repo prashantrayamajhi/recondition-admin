@@ -1,9 +1,11 @@
 import './index.scss'
+import Navbar from './../Navbar/Navbar'
 
 export default function User() {
   return (
-    <div>
+    <>
+      <Navbar />
       <h1>Single User</h1>
-    </div>
+    </>
   )
 }

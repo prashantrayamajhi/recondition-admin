@@ -2,6 +2,8 @@ import './index.scss'
 import Card from './../Card/Card'
 import { Link } from 'react-router-dom'
 import { AddCircle } from '@material-ui/icons'
+import Navbar from './../Navbar/Navbar'
+
 export default function Product() {
   const data = [
     {
@@ -47,6 +49,7 @@ export default function Product() {
   })
   return (
     <>
+      <Navbar />
       <div className='add-product'>
         <Link to='/addProduct' className='link'><AddCircle color='primary' style={{ fontSize: 45 }} /></Link>
       </div>
