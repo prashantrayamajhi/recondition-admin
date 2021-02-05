@@ -28,7 +28,7 @@ export default function CardComponent(cardObj : card) {
   }
   return (
     <>
-      <ModalComponent isOpen={modal} />
+      <ModalComponent title="Do you want to delete the product ?" isOpen={modal} setOpen={setModal} />
       <Card className='card-wrapper' key={cardObj.image}>
         <CardActionArea>
           <CardMedia

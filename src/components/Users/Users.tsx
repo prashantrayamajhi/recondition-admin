@@ -10,10 +10,18 @@ import Button from '@material-ui/core/Button'
 import { Edit, Delete, AddCircle } from '@material-ui/icons'
 import Navbar from './../Navbar/Navbar'
 import { Link } from 'react-router-dom'
+import ModalComponent from './../modal/Modal'
+import { useState } from 'react'
 
 export default function Users() {
+  const [modal, setModal] = useState<boolean>(false)
+
+  const toggleModal = () => {
+    setModal(prev => !prev)
+  }
   return (
     <>
+      <ModalComponent title="Do you want to delete the User ?" isOpen={modal} setOpen={setModal} />
       <Navbar />
       <div className='add-user'>
         <Link to='/addUser' className='link'><AddCircle color='primary' style={{ fontSize: 45 }} /></Link>
@@ -40,17 +48,7 @@ export default function Users() {
               <TableCell>Thankot / Checkpost</TableCell>
               <TableCell>Admin</TableCell>
               <TableCell align='center' className='actions'><Link className='link' to=''><Button className='btn' variant='contained' size='small' style={{ backgroundColor:'lightseagreen' }}><Edit className='icon'/></Button></Link>
-                <Link className='link' to=''><Button className='btn' variant='contained' color='secondary' size='small'><Delete className='icon'/></Button></Link></TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>2</TableCell>
-              <TableCell>John Doe</TableCell>
-              <TableCell>johndoe@gmail.com</TableCell>
-              <TableCell>9876543211</TableCell>
-              <TableCell>Kalimati</TableCell>
-              <TableCell>Staff</TableCell>
-              <TableCell align='center' className='actions'><Link className='link' to=''><Button className='btn' variant='contained' size='small' style={{ backgroundColor:'lightseagreen' }}><Edit className='icon'/></Button></Link>
-                <Link className='link' to=''><Button className='btn' variant='contained' color='secondary' size='small'><Delete className='icon'/></Button></Link></TableCell>
+                <Button className='btn' variant='contained' color='secondary' size='small' onClick={toggleModal}><Delete className='icon'/></Button></TableCell>
             </TableRow>
           </TableBody>
         </Table>

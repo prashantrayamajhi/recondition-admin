@@ -1,10 +1,12 @@
 import './index.scss'
+import { useState } from 'react'
 import Card from './../Card/Card'
 import { Link } from 'react-router-dom'
 import { AddCircle } from '@material-ui/icons'
 import Navbar from './../Navbar/Navbar'
 
 export default function Product() {
+
   const data = [
     {
       id : 1,

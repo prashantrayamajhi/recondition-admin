@@ -1,4 +1,5 @@
 .navbar {
+  overflow-x: hidden !important;
   .link-wrapper {
     .link {
       text-decoration: none;
@@ -22,7 +23,7 @@
     .link-wrapper {
       z-index: 10;
       position: absolute;
-      right: -100%;
+      right: -1000%;
       top: 0;
       bottom: 0;
     }
