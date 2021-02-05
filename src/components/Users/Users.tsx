@@ -8,11 +8,13 @@ import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
 import { Edit, Delete, AddCircle } from '@material-ui/icons'
+import Navbar from './../Navbar/Navbar'
 import { Link } from 'react-router-dom'
 
 export default function Users() {
   return (
     <>
+      <Navbar />
       <div className='add-user'>
         <Link to='/addUser' className='link'><AddCircle color='primary' style={{ fontSize: 45 }} /></Link>
       </div>
