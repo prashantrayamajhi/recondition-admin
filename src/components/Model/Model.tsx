@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
@@ -10,10 +11,17 @@ import { Edit, Delete, AddCircle } from '@material-ui/icons'
 import Navbar from './../Navbar/Navbar'
 import Container from './../Container/Container'
 import { Link } from 'react-router-dom'
+import ModalComponent from './../modal/Modal'
 
 export default function Model() {
+  const [modal, setModal] = useState<boolean>(false)
+
+  const toggleModal = () => {
+    setModal(prev => !prev)
+  }
   return (
     <>
+      <ModalComponent title="Do you want to delete the Model ?" isOpen={modal} setOpen={setModal} />
       <Navbar />
       <Container>
         <div className='add-category'>
@@ -33,7 +41,7 @@ export default function Model() {
                 <TableCell align='center'>1</TableCell>
                 <TableCell align='center'>Honda</TableCell>
                 <TableCell align='center' className='actions'><Link className='link' to=''><Button className='btn' variant='contained' size='small' style={{ backgroundColor:'lightseagreen' }}><Edit className='icon'/></Button></Link>
-                  <Link className='link' to=''><Button className='btn' variant='contained' color='secondary' size='small'><Delete className='icon'/></Button></Link></TableCell>
+                  <Button className='btn' variant='contained' color='secondary' size='small' onClick={toggleModal}><Delete className='icon' /></Button></TableCell>
               </TableRow>
             </TableBody>
           </Table>

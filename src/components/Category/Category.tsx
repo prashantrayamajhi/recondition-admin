@@ -9,12 +9,21 @@ import Button from '@material-ui/core/Button'
 import { Edit, Delete, AddCircle } from '@material-ui/icons'
 import Navbar from './../Navbar/Navbar'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import ModalComponent from './../modal/Modal'
 import Container from './../Container/Container'
 import './index.scss'
 
 export default function Category() {
+  const [modal, setModal] = useState<boolean>(false)
+
+  const toggleModal = () => {
+    setModal(prev => !prev)
+  }
+
   return (
     <>
+      <ModalComponent title="Do you want to delete the Category ?" isOpen={modal} setOpen={setModal} />
       <Navbar />
       <Container>
         <div className='add-category'>
@@ -34,7 +43,7 @@ export default function Category() {
                 <TableCell align='center'>1</TableCell>
                 <TableCell align='center'>Car</TableCell>
                 <TableCell align='center' className='actions'><Link className='link' to=''><Button className='btn' variant='contained' size='small' style={{ backgroundColor:'lightseagreen' }}><Edit className='icon'/></Button></Link>
-                  <Link className='link' to=''><Button className='btn' variant='contained' color='secondary' size='small'><Delete className='icon'/></Button></Link></TableCell>
+                  <Button className='btn' variant='contained' color='secondary' size='small' onClick={toggleModal}><Delete className='icon'/></Button></TableCell>
               </TableRow>
             </TableBody>
           </Table>
