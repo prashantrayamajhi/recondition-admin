@@ -22,6 +22,8 @@ module.exports = {
     'no-trailing-spaces': 'error',
     'object-curly-spacing': ['error', 'always'],
     'arrow-spacing': ['error', { before: true, after: true }],
-    'linebreak-style': ['off', 'always']
+    'linebreak-style': ['off', 'always'],
+    '@typescript-eslint/no-unused-vars': ['off', 'always'],
+    'react-hooks/exhaustive-deps': ['off', 'always']
   },
 }
