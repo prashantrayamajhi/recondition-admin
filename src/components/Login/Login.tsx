@@ -30,9 +30,9 @@ export default function Login() {
     try {
       const res = await Axios.post('/api/v1/admin/auth/login', data)
       if (res.status === 200) {
-        if (res.data.accessToken && res.data.userId) {
+        if (res.data.accessToken && res.data.userId ) {
           localStorage.setItem('userId', res.data.userId)
-          localStorage.setItem('accessToken', res.data.token)
+          localStorage.setItem('accessToken', res.data.accessToken)
           localStorage.setItem('isAuthenticated', 'true')
         }
         history.push('/')

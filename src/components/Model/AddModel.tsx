@@ -2,8 +2,12 @@ import { useState } from 'react'
 import Container from './../Container/Container'
 import { Typography, Button, TextField } from '@material-ui/core'
 import Navbar from './../Navbar/Navbar'
+import Axios from './../api/server'
+import { useHistory } from 'react-router-dom'
 
 export default function AddModel() {
+
+  const history = useHistory()
 
   const [name,setName] = useState('')
 
@@ -11,10 +15,23 @@ export default function AddModel() {
     setFunction(value)
   }
 
-  const onFormSubmit = (e : React.SyntheticEvent) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+    }
+  }
+
+  const onFormSubmit = async (e : React.SyntheticEvent) => {
     e.preventDefault()
     const data = { name }
-    console.log(data)
+    try{
+      const res = await Axios.post('/api/v1/admin/models',data, config)
+      if(res.status === 201){
+        history.push('/model')
+      }
+    }catch(err){
+      console.log(err)
+    }
   }
   return (
     <>

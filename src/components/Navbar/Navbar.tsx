@@ -45,10 +45,8 @@ export default function Navbar() {
         </Typography>
         <div className={ `link-wrapper ${ isResponsive ? 'responsive' : '' }` }>
           <Link to="/" className='link' onClick={() => { setIsResponsive(false) }}><Button className='link-btn'>Products</Button></Link>
-          <Link to="/users" className='link' onClick={() => { setIsResponsive(false) }}><Button className='link-btn' >Users</Button></Link>
-          <Link to="/category" className='link' onClick={() => { setIsResponsive(false) }}><Button className='link-btn' >Category</Button></Link>
           <Link to="/model" className='link' onClick={() => { setIsResponsive(false) }}><Button className='link-btn' >Model</Button></Link>
-          {/* <Link to="/settings" className='link' onClick={() => { setIsResponsive(false) }}><Button className='link-btn' >Settings</Button></Link> */}
+          <Link to="/users" className='link' onClick={() => { setIsResponsive(false) }}><Button className='link-btn' >Users</Button></Link>
           <span className='link' onClick={() => { setIsResponsive(false) }}><Button className='link-btn' color="inherit" onClick={onLogout}>Logout</Button></span>
         </div>
         <IconButton edge="start" className='menu' aria-label="menu" onClick={() => { toggleResponsive() }}>

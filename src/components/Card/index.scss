@@ -40,3 +40,18 @@
     }
   }
 }
+
+@media(max-width:800px){
+  .card-wrapper{
+    .action-wrapper{
+      .action-btn{
+        font-size: 0.6rem !important;
+      }
+      .link{
+        .action-btn{
+          font-size: 0.6rem !important;
+      } 
+      }
+    }
+  }
+}

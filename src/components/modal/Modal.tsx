@@ -1,17 +1,35 @@
 import { Button, Typography } from '@material-ui/core'
 import ReactDOM from 'react-dom'
+import Axios from './../api/server'
 import './index.scss'
 
 interface modal {
     isOpen : boolean,
     setOpen : any,
-    title: string
+    title: string,
+    link : string
 }
 
 export default function ModalComponent(modalObj : modal) {
 
   const handleClose = () => {
     modalObj.setOpen(!modalObj.isOpen)
+  }
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+    }
+  }
+
+  const handleDelete = async () => {
+    modalObj.setOpen(false)
+    try{
+      await Axios.delete(modalObj.link, config)
+      window.location.reload()
+    }catch(err){
+      console.log(err)
+    }
   }
 
   if(modalObj.isOpen){
@@ -23,7 +41,7 @@ export default function ModalComponent(modalObj : modal) {
               <Typography variant='h3'>{modalObj.title}</Typography>
               <div className='btn-wrapper'>
                 <Button className='btn' size='medium' variant='contained' color='secondary' onClick={handleClose}>Cancel</Button>
-                <Button className='btn' size='medium' variant='contained' color='primary'>Delete</Button>
+                <Button className='btn' size='medium' variant='contained' color='primary' onClick={handleDelete}>Delete</Button>
               </div>
             </div>
           </div>

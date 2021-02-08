@@ -13,10 +13,10 @@ import { useState } from 'react'
 
 
 interface card {
-    image : string,
-    title : String,
-    price : String,
-    key: Number
+    thumbnail : string,
+    title : string,
+    price : string,
+    id: number
 }
 
 export default function CardComponent(cardObj : card) {
@@ -28,12 +28,12 @@ export default function CardComponent(cardObj : card) {
   }
   return (
     <>
-      <ModalComponent title="Do you want to delete the product ?" isOpen={modal} setOpen={setModal} />
-      <Card className='card-wrapper' key={cardObj.image}>
+      <ModalComponent title="Do you want to delete the product ?" isOpen={modal} setOpen={setModal} link={`/api/v1/admin/products/${cardObj.id}`} />
+      <Card className='card-wrapper' key={cardObj.id}>
         <CardActionArea>
           <CardMedia
             className='img'
-            image = {cardObj.image}
+            image = {cardObj.thumbnail}
           />
           <CardContent className='title-wrapper' >
             <Typography className='title' variant="h4" >

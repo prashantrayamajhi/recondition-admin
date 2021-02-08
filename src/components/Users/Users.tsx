@@ -21,7 +21,7 @@ export default function Users() {
   }
   return (
     <>
-      <ModalComponent title="Do you want to delete the User ?" isOpen={modal} setOpen={setModal} />
+      <ModalComponent title="Do you want to delete the User ?" isOpen={modal} setOpen={setModal} link={'1'}/>
       <Navbar />
       <div className='add-user'>
         <Link to='/addUser' className='link'><AddCircle color='primary' style={{ fontSize: 45 }} /></Link>

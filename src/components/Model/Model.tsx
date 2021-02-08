@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
@@ -12,19 +12,58 @@ import Navbar from './../Navbar/Navbar'
 import Container from './../Container/Container'
 import { Link } from 'react-router-dom'
 import ModalComponent from './../modal/Modal'
+import './index.scss'
+import Axios from './../api/server'
 
 export default function Model() {
   const [modal, setModal] = useState<boolean>(false)
+  const [models, setModels] = useState<any>([])
+  const [id, setId] = useState<number>()
 
-  const toggleModal = () => {
-    setModal(prev => !prev)
+  const config = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+    }
   }
+  useEffect(() => {
+    const fetchModels = async () => {
+      try{
+        const res = await Axios.get('/api/v1/admin/models', config)
+        setModels(res.data.data)
+      }catch(err){
+        console.log(err)
+      }
+    }
+    fetchModels()
+  }, [])
+
+  const toggleModal = (id:number) => {
+    setModal(prev => !prev)
+    handleId(id)
+  }
+
+  const handleId = (id : number) => {
+    setId(id)
+  }
+
+  let sn:number = 0
+  const mappedData = models.map((model:any) => {
+    sn++
+    return (
+      <TableRow key={model._id}>
+        <TableCell align='center'>{sn}</TableCell>
+        <TableCell align='center'>{model.name}</TableCell>
+        <TableCell align='center' className='actions'><Link className='link' to=''><Button className='btn' variant='contained' size='small' style={{ backgroundColor: 'lightseagreen' }}><Edit className='icon' /></Button></Link>
+          <Button className='btn' variant='contained' color='secondary' size='small' onClick={() => {toggleModal(model._id)}}><Delete className='icon' /></Button></TableCell>
+      </TableRow>
+    )
+  })
   return (
     <>
-      <ModalComponent title="Do you want to delete the Model ?" isOpen={modal} setOpen={setModal} />
+      <ModalComponent title="Do you want to delete the Model ?" isOpen={modal} setOpen={setModal} link={`/api/v1/admin/models/${id}`} />
       <Navbar />
       <Container>
-        <div className='add-category'>
+        <div className='add-model'>
           <Link to='/addModel' className='link'><AddCircle color='primary' style={{ fontSize: 45 }} /></Link>
         </div>
         <TableContainer className='table' component={Paper}>
@@ -37,12 +76,7 @@ export default function Model() {
               </TableRow>
             </TableHead>
             <TableBody>
-              <TableRow>
-                <TableCell align='center'>1</TableCell>
-                <TableCell align='center'>Honda</TableCell>
-                <TableCell align='center' className='actions'><Link className='link' to=''><Button className='btn' variant='contained' size='small' style={{ backgroundColor:'lightseagreen' }}><Edit className='icon'/></Button></Link>
-                  <Button className='btn' variant='contained' color='secondary' size='small' onClick={toggleModal}><Delete className='icon' /></Button></TableCell>
-              </TableRow>
+              {mappedData}
             </TableBody>
           </Table>
         </TableContainer>
