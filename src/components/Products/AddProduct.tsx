@@ -1,24 +1,64 @@
 import './index.scss'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Container from './../Container/Container'
 import { Select, MenuItem, Typography, Button, TextField, InputLabel, TextareaAutosize } from '@material-ui/core'
 import Navbar from './../Navbar/Navbar'
+import Axios from './../api/server'
+import { useHistory } from 'react-router-dom'
+
 export default function AddProduct() {
+
+  const history = useHistory()
+
   const [name,setName] = useState('')
   const [price,setPrice] = useState('')
   const [thumbnail,setThumbnail] = useState('')
   const [model,setModel] = useState('')
-  const [type, setType] = useState('')
+  const [modelList, setModelList] = useState<any>([])
   const [description, setDescription] = useState('')
 
   const handleInputChange = (setFunction : Function , value : string) => {
     setFunction(value)
   }
 
-  const onFormSubmit = (e : React.SyntheticEvent) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+    }
+  }
+
+  useEffect(() => {
+    const getModel = async () => {
+      try{
+        const res = await Axios.get('/api/v1/admin/models', config)
+        setModelList(res.data.data)
+      }catch(err){
+        console.log(err)
+      }
+    }
+    getModel()
+  }, [])
+
+  const mapModels = modelList.map((model: any) => {
+    return <MenuItem key={model._id} value={model.name} selected>{model.name}</MenuItem>
+  })
+
+  const onFormSubmit = async (e : React.SyntheticEvent) => {
     e.preventDefault()
-    const data = { name, price, thumbnail, model, type, description }
-    console.log(data)
+    const data = { name, price, thumbnail, model, description }
+    const config = {
+      headers : {
+        Authorization : `Bearer ${localStorage.getItem('accessToken')}`
+      }
+    }
+    try{
+      const res = await Axios.post('/api/v1/admin/products', data, config)
+      if(res.status === 201){
+        history.push('/')
+      }
+    }catch(err){
+      console.log(err)
+    }
   }
 
   return (
@@ -39,16 +79,7 @@ export default function AddProduct() {
           <div className='input-wrapper'>
             <InputLabel id='model-label'>Model</InputLabel>
             <Select value={model} labelId='model-label' className='input'  onChange={(e) => { handleInputChange(setModel, e.target.value as string) }} >
-              <MenuItem value='honda' selected>Honda</MenuItem>
-              <MenuItem value='bajaj'>Bajaj</MenuItem>
-              <MenuItem value='pulsar'>Pulsar</MenuItem>
-            </Select>
-          </div>
-          <div className='input-wrapper'>
-            <InputLabel id='type-label'>Type</InputLabel>
-            <Select value={type} labelId='type-label' className='input'  onChange={(e) => { handleInputChange(setType, e.target.value as string) }}>
-              <MenuItem value='car'>Car</MenuItem>
-              <MenuItem value='bike'>Bike</MenuItem>
+              {mapModels}
             </Select>
           </div>
           <div className='input-wrapper'>

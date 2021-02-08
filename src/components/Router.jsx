@@ -8,8 +8,6 @@ import AddProduct from './Products/AddProduct'
 import Users from './Users/Users'
 import AddUser from './Users/AddUser'
 import Login from './Login/Login'
-import Category from './Category/Category'
-import AddCategory from './Category/AddCategory'
 import Model from './Model/Model'
 import AddModel from './Model/AddModel'
 
@@ -23,8 +21,6 @@ export default function RouterComponent() {
           <PrivateRoute path="/addProduct" exact component={AddProduct} />
           <PrivateRoute path="/users" exact component={Users} />
           <PrivateRoute path="/addUser" exact component={AddUser} />
-          <PrivateRoute path="/category" exact component={Category} />
-          <PrivateRoute path="/addCategory" exact component={AddCategory} />
           <PrivateRoute path="/model" exact component={Model} />
           <PrivateRoute path="/addModel" exact component={AddModel} />
         </Switch>

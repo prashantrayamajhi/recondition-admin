@@ -8,7 +8,7 @@
   padding-top: 1rem;
   display: grid;
   grid-gap: 2.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   justify-content: center;
 }
 
@@ -42,7 +42,17 @@ form {
   }
 }
 
+@media (max-width: 1100px){
+  .products-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 800px) {
+  .products-wrapper{
+    padding: 0 2rem;
+    padding-top: 1rem;
+  }
   form {
     .btn-wrapper {
       text-align: center;
@@ -50,5 +60,11 @@ form {
         width: 50% !important;
       }
     }
+  }
+}
+
+@media(max-width: 700px){
+    .products-wrapper {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
