@@ -34,6 +34,7 @@ export default function Login() {
           localStorage.setItem('userId', res.data.userId)
           localStorage.setItem('accessToken', res.data.accessToken)
           localStorage.setItem('isAuthenticated', 'true')
+          localStorage.setItem('role', res.data.role)
         }
         history.push('/')
       }
