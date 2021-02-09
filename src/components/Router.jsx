@@ -1,6 +1,6 @@
 import { BrowserRouter as Router } from 'react-router-dom'
 import { Switch, Route } from 'react-router-dom'
-import PrivateRoute from './PrivateRoute/PrivateRoute'
+import { PrivateRoute, AdminRoute } from './ProtectedRoutes/ProtectedRoutes'
 
 // componets
 import Products from './Products/Products'
@@ -19,8 +19,8 @@ export default function RouterComponent() {
           <Route path="/login" exact component={Login} />
           <PrivateRoute path="/" exact component={Products} />
           <PrivateRoute path="/addProduct" exact component={AddProduct} />
-          <PrivateRoute path="/users" exact component={Users} />
-          <PrivateRoute path="/addUser" exact component={AddUser} />
+          <AdminRoute path="/users" exact component={Users} />
+          <AdminRoute path="/addUser" exact component={AddUser} />
           <PrivateRoute path="/model" exact component={Model} />
           <PrivateRoute path="/addModel" exact component={AddModel} />
         </Switch>
@@ -28,3 +28,5 @@ export default function RouterComponent() {
     </>
   )
 }
+
+

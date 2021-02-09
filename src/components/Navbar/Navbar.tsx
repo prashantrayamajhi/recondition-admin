@@ -18,6 +18,7 @@ export default function Navbar() {
     localStorage.removeItem('userId')
     localStorage.removeItem('accessToken')
     localStorage.removeItem('isAuthenticated')
+    localStorage.removeItem('role')
     history.push('/login')
   }
   // state for responsive navbar
@@ -37,6 +38,12 @@ export default function Navbar() {
   const toggleResponsive = () => {
     setIsResponsive(!isResponsive)
   }
+
+  const isAdmin = () => {
+    if(localStorage.getItem('role') === 'admin'){
+      return <Link to="/users" className='link' onClick={() => { setIsResponsive(false) }}><Button className='link-btn' >Users</Button></Link>
+    }
+  }
   return (
     <AppBar className='navbar' position='static'>
       <Toolbar>
@@ -46,7 +53,7 @@ export default function Navbar() {
         <div className={ `link-wrapper ${ isResponsive ? 'responsive' : '' }` }>
           <Link to="/" className='link' onClick={() => { setIsResponsive(false) }}><Button className='link-btn'>Products</Button></Link>
           <Link to="/model" className='link' onClick={() => { setIsResponsive(false) }}><Button className='link-btn' >Model</Button></Link>
-          <Link to="/users" className='link' onClick={() => { setIsResponsive(false) }}><Button className='link-btn' >Users</Button></Link>
+          {isAdmin()}
           <span className='link' onClick={() => { setIsResponsive(false) }}><Button className='link-btn' color="inherit" onClick={onLogout}>Logout</Button></span>
         </div>
         <IconButton edge="start" className='menu' aria-label="menu" onClick={() => { toggleResponsive() }}>
