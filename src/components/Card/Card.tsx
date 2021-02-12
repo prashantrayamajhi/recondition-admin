@@ -47,7 +47,7 @@ export default function CardComponent(cardObj : card) {
           <Link className='link' to={`/product/${cardObj.id}`}><Button className='action-btn' size="small" variant='contained' color="primary">
           More
           </Button></Link>
-          <Link className='link' to={`/addProduct/${cardObj.id}?isEdit=true`}><Button className='action-btn' size="small" variant='contained' style={{ backgroundColor: 'green', color:'white' }}>
+          <Link className='link' to={`/addProduct/update/${cardObj.id}`}><Button className='action-btn' size="small" variant='contained' style={{ backgroundColor: 'green', color:'white' }}>
             <Edit className='icon' /> Edit
           </Button></Link>
           <Button className='action-btn' size="small" variant='contained' color="secondary" onClick={toggleModal}>

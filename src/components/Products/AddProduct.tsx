@@ -17,10 +17,8 @@ export default function AddProduct(props:any) {
   const [modelList, setModelList] = useState<any>([])
   const [description, setDescription] = useState('')
   const [isEdit, setIsEdit] = useState<boolean>(false)
-  const [updateData, setUpdateData] = useState<any>([])
 
   const handleInputChange = (setFunction : Function , value : string) => {
-    console.log(value)
     setFunction(value)
   }
 
@@ -36,12 +34,33 @@ export default function AddProduct(props:any) {
   }
 
   useEffect(() => {
+    const id = props.match.params.id
+    const fetchData = async () => {
+      try {
+        const res = await Axios.get('/api/v1/admin/products/' + id, config)
+        console.log(res)
+        setName(res.data.data.name)
+        setPrice(res.data.data.price)
+        setModel(res.data.data.model)
+        setDescription(res.data.data.description)
+        setThumbnail(res.data.data.thumbnail)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    if (id) {
+      setIsEdit(true)
+      fetchData()
+    }
+
+  }, [])
+
+  useEffect(() => {
     const getUpdateData = async () => {
       try {
         const id = props.match.params.id
         const res = await Axios.get('/api/v1/admin/products/'+id, config)
         console.log(res.data.data)
-        setUpdateData(res.data.data)
       } catch (err) {
         console.log(err)
       }
@@ -77,9 +96,16 @@ export default function AddProduct(props:any) {
     formData.append('model', model)
     formData.append('description', description)
     try{
-      const res = await Axios.post('/api/v1/admin/products', formData, config)
-      if(res.status === 201){
-        history.push('/')
+      if(isEdit){
+        const res = await Axios.patch('/api/v1/admin/products/' + props.match.params.id, formData, config)
+        if (res.status === 200) {
+          history.push('/')
+        }
+      }else{
+        const res = await Axios.post('/api/v1/admin/products', formData, config)
+        if(res.status === 201){
+          history.push('/')
+        }
       }
     }catch(err){
       console.log(err)
@@ -91,9 +117,9 @@ export default function AddProduct(props:any) {
       <Navbar />
       <Container>
         <form autoComplete='off' onSubmit={onFormSubmit}>
-          <Typography className='heading' color='primary' variant='h2'>Add Product</Typography>
+          <Typography className='heading' color='primary' variant='h2'>{isEdit ? 'Update Product' : 'Add Product'}</Typography>
           <div className='input-wrapper'>
-            <TextField className='input' label='Name' id="outlined-basic" variant="outlined" value = {isEdit ? updateData.name : name} onChange={(e) => { handleInputChange(setName, e.target.value as string) }}/>
+            <TextField className='input' label='Name' id="outlined-basic" variant="outlined" value = {name} onChange={(e) => { handleInputChange(setName, e.target.value as string) }}/>
           </div>
           <div className='input-wrapper'>
             <TextField className='input' label='Price' id="outlined-basic" variant="outlined" value={price} onChange={(e) => { handleInputChange(setPrice, e.target.value as string) }}/>
@@ -108,21 +134,14 @@ export default function AddProduct(props:any) {
             <TextareaAutosize className='input description' placeholder='Description' rowsMax={10} rowsMin={8} value={description} onChange={(e) => { handleInputChange(setDescription, e.target.value as string) }} />
           </div>
           <div className='input-wrapper'>
-            {/* <Input type='file' className='input' value={thumbnail} onChange={(e) => { handleFileChange(e) }}/> */}
-            <Button
-              variant="contained"
-              component="label"
-            >
-              {isEdit ? 'Update File' : 'Upload File'}
-              <input
-                type="file"
-                onChange={(e) => { handleFileChange(e) }}
-                hidden
-              />
-            </Button>
+            <input
+              type="file"
+              className='input'
+              onChange={(e) => { handleFileChange(e) }}
+            />
           </div>
           <div className='btn-wrapper'>
-            <Button type='submit' className='btn' variant='contained' size='large' color='primary'>Submit</Button>
+            <Button type='submit' className='btn' variant='contained' size='large' color='primary'>{isEdit ? 'Update' : 'Submit'}</Button>
           </div>
         </form>
       </Container>
