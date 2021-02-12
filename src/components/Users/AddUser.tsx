@@ -74,20 +74,20 @@ export default function AddUser(props:any) {
         <form autoComplete='false' onSubmit={onFormSubmit}>
           <Typography className='heading' color='primary' variant='h2'>{isEdit ? 'Update User' : 'Add User'}</Typography>
           <div className='input-wrapper'>
-            <TextField className='input' label='Name' id="outlined-basic" variant="outlined" value={name} onChange={(e) => { handleInputChange(setName, e.target.value as string) }}/>
+            <TextField className='input' label='Name'  variant="outlined" value={name} onChange={(e) => { handleInputChange(setName, e.target.value as string) }}/>
           </div>
           <div className='input-wrapper'>
-            <TextField className='input' label='Email' id="outlined-basic" variant="outlined" value={email} onChange={(e) => { handleInputChange(setEmail, e.target.value as string) }}/>
+            <TextField className='input' label='Email'  variant="outlined" value={email} onChange={(e) => { handleInputChange(setEmail, e.target.value as string) }}/>
           </div>
           <div className='input-wrapper'>
-            <TextField className='input' label='Address' id="outlined-basic" variant="outlined" value={address} onChange={(e) => { handleInputChange(setAddress, e.target.value as string) }} />
+            <TextField className='input' label='Address'  variant="outlined" value={address} onChange={(e) => { handleInputChange(setAddress, e.target.value as string) }} />
           </div>
           {!isEdit ?
             <div className='input-wrapper'>
-              <TextField type='password' className='input' label='Password' id="outlined-basic" variant="outlined" value={password} onChange={(e) => { handleInputChange(setPassword, e.target.value as string) }}/>
+              <TextField type='password' className='input' label='Password'  variant="outlined" value={password} onChange={(e) => { handleInputChange(setPassword, e.target.value as string) }}/>
             </div> : ''}
           <div className='input-wrapper'>
-            <TextField className='input' label='Phone' id="outlined-basic" variant="outlined" value={phone} onChange={(e) => { handleInputChange(setPhone, e.target.value as string) }}/>
+            <TextField className='input' label='Phone'  variant="outlined" value={phone} onChange={(e) => { handleInputChange(setPhone, e.target.value as string) }}/>
           </div>
           <div className='input-wrapper'>
             <InputLabel id='type-label'>Role</InputLabel>
