@@ -26,7 +26,7 @@ export default function CardComponent(cardObj : card) {
     setModal(prev => !prev)
   }
   return (
-    <div key={cardObj.id}>
+    <div>
       <ModalComponent title="Do you want to delete the product ?" isOpen={modal} setOpen={setModal} link={`/api/v1/admin/products/${cardObj.id}`} />
       <Card className='card-wrapper'>
         <CardActionArea>

@@ -47,7 +47,7 @@ export default function Model() {
   }
 
   let sn:number = 0
-  const mappedData = models.map((model:any) => {
+  const mappedData = models.slice(0).reverse().map((model:any) => {
     sn++
     return (
       <TableRow key={model._id}>
