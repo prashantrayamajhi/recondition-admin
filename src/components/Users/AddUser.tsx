@@ -1,7 +1,7 @@
 import './index.scss'
 import { useState, useEffect } from 'react'
 import Container from './../Container/Container'
-import { Select, MenuItem, Typography, Button, TextField, InputLabel } from '@material-ui/core'
+import { Select, MenuItem, Typography, Button, TextField, InputLabel, Input } from '@material-ui/core'
 import Navbar from './../Navbar/Navbar'
 import { useHistory } from 'react-router-dom'
 import Axios from './../api/server'
@@ -63,10 +63,6 @@ export default function AddUser(props:any) {
           history.push('/users')
         }
       }
-      // const res = await Axios.post('/api/v1/admin/auth/signup', data, config)
-      // if (res.status === 201) {
-      //   history.push('/users')
-      // }
     } catch (err) {
       console.log(err)
     }
@@ -76,7 +72,7 @@ export default function AddUser(props:any) {
       <Navbar />
       <Container>
         <form autoComplete='false' onSubmit={onFormSubmit}>
-          <Typography className='heading' color='primary' variant='h2'>Add User</Typography>
+          <Typography className='heading' color='primary' variant='h2'>{isEdit ? 'Update User' : 'Add User'}</Typography>
           <div className='input-wrapper'>
             <TextField className='input' label='Name' id="outlined-basic" variant="outlined" value={name} onChange={(e) => { handleInputChange(setName, e.target.value as string) }}/>
           </div>
@@ -86,9 +82,10 @@ export default function AddUser(props:any) {
           <div className='input-wrapper'>
             <TextField className='input' label='Address' id="outlined-basic" variant="outlined" value={address} onChange={(e) => { handleInputChange(setAddress, e.target.value as string) }} />
           </div>
-          <div className='input-wrapper'>
-            <TextField className='password' label='Password' id="outlined-basic" variant="outlined" value={password} onChange={(e) => { handleInputChange(setPassword, e.target.value as string) }}/>
-          </div>
+          {!isEdit ?
+            <div className='input-wrapper'>
+              <TextField type='password' className='input' label='Password' id="outlined-basic" variant="outlined" value={password} onChange={(e) => { handleInputChange(setPassword, e.target.value as string) }}/>
+            </div> : ''}
           <div className='input-wrapper'>
             <TextField className='input' label='Phone' id="outlined-basic" variant="outlined" value={phone} onChange={(e) => { handleInputChange(setPhone, e.target.value as string) }}/>
           </div>
@@ -100,7 +97,7 @@ export default function AddUser(props:any) {
             </Select>
           </div>
           <div className='btn-wrapper'>
-            <Button type='submit' className='btn' variant='contained' size='large' color='primary'>Submit</Button>
+            <Button type='submit' className='btn' variant='contained' size='large' color='primary'>{isEdit ? 'Update' : 'Submit'}</Button>
           </div>
         </form>
       </Container>
