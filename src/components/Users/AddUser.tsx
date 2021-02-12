@@ -1,14 +1,15 @@
 import './index.scss'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Container from './../Container/Container'
 import { Select, MenuItem, Typography, Button, TextField, InputLabel } from '@material-ui/core'
 import Navbar from './../Navbar/Navbar'
 import { useHistory } from 'react-router-dom'
 import Axios from './../api/server'
 
-export default function AddUser() {
+export default function AddUser(props:any) {
 
   const history = useHistory()
+  const [isEdit, setIsEdit] = useState<boolean>(false)
 
   const [name,setName] = useState('')
   const [email, setEmail] = useState('')
@@ -17,6 +18,26 @@ export default function AddUser() {
   const [role, setRole] = useState('')
   const [address, setAddress] = useState('')
 
+  useEffect(() => {
+    const id = props.match.params.id
+    const fetchData = async () => {
+      try {
+        const res = await Axios.get('/api/v1/admin/users/' + id, config)
+        setName(res.data.data.name)
+        setEmail(res.data.data.email)
+        setPhone(res.data.data.phone)
+        setRole(res.data.data.role)
+        setAddress(res.data.data.address)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    if (id) {
+      setIsEdit(true)
+      fetchData()
+    }
+
+  }, [])
   const handleInputChange = (setFunction : Function , value : string) => {
     setFunction(value)
   }
@@ -31,10 +52,21 @@ export default function AddUser() {
     e.preventDefault()
     const data = { name, email, password, phone, role, address }
     try {
-      const res = await Axios.post('/api/v1/admin/auth/signup', data, config)
-      if (res.status === 201) {
-        history.push('/users')
+      if (isEdit) {
+        const res = await Axios.patch('/api/v1/admin/users/' + props.match.params.id, data, config)
+        if (res.status === 200) {
+          history.push('/users')
+        }
+      } else {
+        const res = await Axios.post('/api/v1/admin/auth/signup', data, config)
+        if (res.status === 201) {
+          history.push('/users')
+        }
       }
+      // const res = await Axios.post('/api/v1/admin/auth/signup', data, config)
+      // if (res.status === 201) {
+      //   history.push('/users')
+      // }
     } catch (err) {
       console.log(err)
     }
@@ -52,7 +84,10 @@ export default function AddUser() {
             <TextField className='input' label='Email' id="outlined-basic" variant="outlined" value={email} onChange={(e) => { handleInputChange(setEmail, e.target.value as string) }}/>
           </div>
           <div className='input-wrapper'>
-            <TextField className='input' label='Password' id="outlined-basic" variant="outlined" value={password} onChange={(e) => { handleInputChange(setPassword, e.target.value as string) }}/>
+            <TextField className='input' label='Address' id="outlined-basic" variant="outlined" value={address} onChange={(e) => { handleInputChange(setAddress, e.target.value as string) }} />
+          </div>
+          <div className='input-wrapper'>
+            <TextField className='password' label='Password' id="outlined-basic" variant="outlined" value={password} onChange={(e) => { handleInputChange(setPassword, e.target.value as string) }}/>
           </div>
           <div className='input-wrapper'>
             <TextField className='input' label='Phone' id="outlined-basic" variant="outlined" value={phone} onChange={(e) => { handleInputChange(setPhone, e.target.value as string) }}/>
@@ -63,9 +98,6 @@ export default function AddUser() {
               <MenuItem value='admin'>Admin</MenuItem>
               <MenuItem value='co-admin'>Co-Admin</MenuItem>
             </Select>
-          </div>
-          <div className='input-wrapper'>
-            <TextField className='input' label='Address' id="outlined-basic" variant="outlined" value={address} onChange={(e) => { handleInputChange(setAddress, e.target.value as string) }}/>
           </div>
           <div className='btn-wrapper'>
             <Button type='submit' className='btn' variant='contained' size='large' color='primary'>Submit</Button>

@@ -53,7 +53,7 @@ export default function Model() {
       <TableRow key={model._id}>
         <TableCell align='center'>{sn}</TableCell>
         <TableCell align='center'>{model.name}</TableCell>
-        <TableCell align='center' className='actions'><Link className='link' to=''><Button className='btn' variant='contained' size='small' style={{ backgroundColor: 'lightseagreen' }}><Edit className='icon' /></Button></Link>
+        <TableCell align='center' className='actions'><Link className='link' to={`/addModel/update/${model._id}?isEdit=true`}><Button className='btn' variant='contained' size='small' style={{ backgroundColor: 'lightseagreen' }}><Edit className='icon' /></Button></Link>
           <Button className='btn' variant='contained' color='secondary' size='small' onClick={() => {toggleModal(model._id)}}><Delete className='icon' /></Button></TableCell>
       </TableRow>
     )
