@@ -35,7 +35,7 @@ export default function Product() {
     fetchData()
   }, [])
 
-  const mappedData = products.map((product:any) => {
+  const mappedData = products.slice(0).reverse().map((product:any) => {
     return <Card id={product._id} title={product.name} thumbnail={product.thumbnail} price={product.price}/>
   })
 

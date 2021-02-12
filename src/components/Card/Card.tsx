@@ -20,20 +20,19 @@ interface card {
 }
 
 export default function CardComponent(cardObj : card) {
-
   const [modal, setModal] = useState<boolean>(false)
 
   const toggleModal = () => {
     setModal(prev => !prev)
   }
   return (
-    <>
+    <div key={cardObj.id}>
       <ModalComponent title="Do you want to delete the product ?" isOpen={modal} setOpen={setModal} link={`/api/v1/admin/products/${cardObj.id}`} />
-      <Card className='card-wrapper' key={cardObj.id}>
+      <Card className='card-wrapper'>
         <CardActionArea>
           <CardMedia
             className='img'
-            image = {cardObj.thumbnail}
+            image={`http://localhost:8080/images/${cardObj.thumbnail}`}
           />
           <CardContent className='title-wrapper' >
             <Typography className='title' variant="h4" >
@@ -45,10 +44,10 @@ export default function CardComponent(cardObj : card) {
           </CardContent>
         </CardActionArea>
         <CardActions className='action-wrapper'>
-          <Link className='link' to=''><Button className='action-btn' size="small" variant='contained' color="primary">
+          <Link className='link' to={`/product/${cardObj.id}`}><Button className='action-btn' size="small" variant='contained' color="primary">
           More
           </Button></Link>
-          <Link className='link' to=''><Button className='action-btn' size="small" variant='contained' style={{ backgroundColor: 'green', color:'white' }}>
+          <Link className='link' to={`/addProduct/${cardObj.id}?isEdit=true`}><Button className='action-btn' size="small" variant='contained' style={{ backgroundColor: 'green', color:'white' }}>
             <Edit className='icon' /> Edit
           </Button></Link>
           <Button className='action-btn' size="small" variant='contained' color="secondary" onClick={toggleModal}>
@@ -56,6 +55,6 @@ export default function CardComponent(cardObj : card) {
           </Button>
         </CardActions>
       </Card>
-    </>
+    </div>
   )
 }
