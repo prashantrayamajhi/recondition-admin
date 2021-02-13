@@ -4,6 +4,7 @@ import Container from './../Container/Container'
 import { Select, MenuItem, Typography, Button, TextField, InputLabel, Input } from '@material-ui/core'
 import Navbar from './../Navbar/Navbar'
 import { useHistory } from 'react-router-dom'
+import Alert from './../Alert/Alert'
 import Axios from './../api/server'
 
 export default function AddUser(props:any) {
@@ -17,6 +18,10 @@ export default function AddUser(props:any) {
   const [phone, setPhone] = useState('')
   const [role, setRole] = useState('')
   const [address, setAddress] = useState('')
+  const [openAlert, setOpenAlert] = useState<boolean>(false)
+  const [message, setMessage] = useState('')
+  const [severity, setSeverity] = useState<string>('')
+
 
   useEffect(() => {
     const id = props.match.params.id
@@ -64,12 +69,15 @@ export default function AddUser(props:any) {
         }
       }
     } catch (err) {
-      console.log(err)
+      setOpenAlert(true)
+      setMessage('Cannot Perform Action')
+      setSeverity('error')
     }
   }
   return (
     <>
       <Navbar />
+      <Alert openAlert={openAlert} setOpenAlert={setOpenAlert} message={message} severity={severity} />
       <Container>
         <form autoComplete='false' onSubmit={onFormSubmit}>
           <Typography className='heading' color='primary' variant='h2'>{isEdit ? 'Update User' : 'Add User'}</Typography>

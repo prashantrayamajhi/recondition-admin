@@ -4,15 +4,16 @@ import { useHistory } from 'react-router-dom'
 import Container from './../Container/Container'
 import { TextField, Typography, Button } from '@material-ui/core'
 import Axios from './../api/server'
+import Alert from './../Alert/Alert'
 
 export default function Login() {
 
   const history = useHistory()
-
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [openAlert, setOpenAlert] = useState<boolean>(false)
   const [message, setMessage] = useState('')
-  const [open, setOpen] = useState(false)
+  const [severity, setSeverity] = useState<string>('')
 
   useEffect(() => {
     if (localStorage.getItem('userId') && localStorage.getItem('accessToken') && localStorage.getItem('isAuthenticated')) {
@@ -26,6 +27,7 @@ export default function Login() {
 
   const onFormSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault()
+    setOpenAlert(false)
     const data = { email, password }
     try {
       const res = await Axios.post('/api/v1/admin/auth/login', data)
@@ -39,25 +41,28 @@ export default function Login() {
         history.push('/')
       }
     } catch (err) {
-      console.log('Invalid credentials')
       setMessage('Invalid Credentials')
-      setOpen(true)
+      setOpenAlert(true)
+      setSeverity('error')
     }
   }
   return (
-    <Container>
-      <form autoComplete='off' onSubmit={onFormSubmit} className='login-wrapper'>
-        <Typography className='heading' color='primary' variant='h2'>Admin Login</Typography>
-        <div className='input-wrapper'>
-          <TextField type='email' className='input' label='Email' variant="outlined" value={email} onChange={(e) => { handleInputChange(setEmail, e.target.value as string) }} />
-        </div>
-        <div className='input-wrapper'>
-          <TextField type='password' className='input' label='Password' variant="outlined" value={password} onChange={(e) => { handleInputChange(setPassword, e.target.value as string) }} />
-        </div>
-        <div className='btn-wrapper'>
-          <Button type='submit' className='btn' variant='contained' size='large' color='primary'>Login</Button>
-        </div>
-      </form>
-    </Container>
+    <>
+      <Alert openAlert={openAlert} setOpenAlert={setOpenAlert} message={message} severity={severity}/>
+      <Container>
+        <form autoComplete='off' onSubmit={onFormSubmit} className='login-wrapper'>
+          <Typography className='heading' color='primary' variant='h2'>Admin Login</Typography>
+          <div className='input-wrapper'>
+            <TextField type='email' className='input' label='Email' variant="outlined" value={email} onChange={(e) => { handleInputChange(setEmail, e.target.value as string) }} />
+          </div>
+          <div className='input-wrapper'>
+            <TextField type='password' className='input' label='Password' variant="outlined" value={password} onChange={(e) => { handleInputChange(setPassword, e.target.value as string) }} />
+          </div>
+          <div className='btn-wrapper'>
+            <Button type='submit' className='btn' variant='contained' size='large' color='primary'>Login</Button>
+          </div>
+        </form>
+      </Container>
+    </>
   )
 }
