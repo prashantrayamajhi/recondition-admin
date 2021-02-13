@@ -54,13 +54,13 @@ export default function AddModel(props:any) {
         const res = await Axios.patch('/api/v1/admin/models/'+ props.match.params.id, data, config)
         if (res.status === 200) {
           setOpenAlert(false)
-          history.push('/model')
+          history.push('/admin/model')
         }
       }else{
         const res = await Axios.post('/api/v1/admin/models',data, config)
         if(res.status === 201){
           setOpenAlert(false)
-          history.push('/model')
+          history.push('/admin/model')
         }
       }
     }catch(err){

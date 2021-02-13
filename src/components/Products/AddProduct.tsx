@@ -105,12 +105,12 @@ export default function AddProduct(props:any) {
       if(isEdit){
         const res = await Axios.patch('/api/v1/admin/products/' + props.match.params.id, formData, config)
         if (res.status === 200) {
-          history.push('/')
+          history.push('/admin/')
         }
       }else{
         const res = await Axios.post('/api/v1/admin/products', formData, config)
         if(res.status === 201){
-          history.push('/')
+          history.push('/admin/')
         }
       }
     }catch(err){

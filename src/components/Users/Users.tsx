@@ -67,7 +67,7 @@ export default function Users() {
       <ModalComponent title="Do you want to delete the User ?" isOpen={modal} setOpen={setModal} link={`/api/v1/admin/users/${id}`}/>
       <Navbar />
       <div className='add-user'>
-        <Link to='/addUser' className='link'><AddCircle color='primary' style={{ fontSize: 45 }} /></Link>
+        <Link to='/admin/addUser' className='link'><AddCircle color='primary' style={{ fontSize: 45 }} /></Link>
       </div>
       <TableContainer className='table' component={Paper}>
         <Table aria-label="simple table">

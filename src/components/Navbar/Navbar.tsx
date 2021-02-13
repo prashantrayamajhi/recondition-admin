@@ -41,7 +41,7 @@ export default function Navbar() {
 
   const isAdmin = () => {
     if(localStorage.getItem('role') === 'admin'){
-      return <Link to="/users" className='link' onClick={() => { setIsResponsive(false) }}><Button className='link-btn' >Users</Button></Link>
+      return <Link to="/admin/users" className='link' onClick={() => { setIsResponsive(false) }}><Button className='link-btn' >Users</Button></Link>
     }
   }
   return (
@@ -51,8 +51,8 @@ export default function Navbar() {
           Admin Panel
         </Typography>
         <div className={ `link-wrapper ${ isResponsive ? 'responsive' : '' }` }>
-          <Link to="/" className='link' onClick={() => { setIsResponsive(false) }}><Button className='link-btn'>Products</Button></Link>
-          <Link to="/model" className='link' onClick={() => { setIsResponsive(false) }}><Button className='link-btn' >Model</Button></Link>
+          <Link to="/admin/" className='link' onClick={() => { setIsResponsive(false) }}><Button className='link-btn'>Products</Button></Link>
+          <Link to="/admin/model" className='link' onClick={() => { setIsResponsive(false) }}><Button className='link-btn' >Model</Button></Link>
           {isAdmin()}
           <span className='link' onClick={() => { setIsResponsive(false) }}><Button className='link-btn' color="inherit" onClick={onLogout}>Logout</Button></span>
         </div>
