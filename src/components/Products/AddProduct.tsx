@@ -4,6 +4,7 @@ import Container from './../Container/Container'
 import { Select, MenuItem, Typography, Button, TextField, InputLabel, TextareaAutosize, Input } from '@material-ui/core'
 import Navbar from './../Navbar/Navbar'
 import Axios from './../api/server'
+import Alert from './../Alert/Alert'
 import { useHistory } from 'react-router-dom'
 
 export default function AddProduct(props:any) {
@@ -17,6 +18,10 @@ export default function AddProduct(props:any) {
   const [modelList, setModelList] = useState<any>([])
   const [description, setDescription] = useState('')
   const [isEdit, setIsEdit] = useState<boolean>(false)
+  const [openAlert, setOpenAlert] = useState<boolean>(false)
+  const [message, setMessage] = useState('')
+  const [severity, setSeverity] = useState<string>('')
+  const [btnState, setBtnState] = useState<boolean>(false)
 
   const handleInputChange = (setFunction : Function , value : string) => {
     setFunction(value)
@@ -87,6 +92,7 @@ export default function AddProduct(props:any) {
 
   const onFormSubmit = async (e : React.SyntheticEvent) => {
     e.preventDefault()
+    setBtnState(true)
     let formData = new FormData()
     formData.append('name', name)
     formData.append('price', price)
@@ -109,39 +115,45 @@ export default function AddProduct(props:any) {
       }
     }catch(err){
       console.log(err)
+      setBtnState(false)
+      setOpenAlert(true)
+      setMessage('Cannot Perform Action')
+      setSeverity('error')
     }
   }
 
   return (
     <>
       <Navbar />
+      <Alert openAlert={openAlert} setOpenAlert={setOpenAlert} message={message} severity={severity} />
       <Container>
         <form autoComplete='off' onSubmit={onFormSubmit}>
           <Typography className='heading' color='primary' variant='h2'>{isEdit ? 'Update Product' : 'Add Product'}</Typography>
           <div className='input-wrapper'>
-            <TextField className='input' label='Name' id="outlined-basic" variant="outlined" value = {name} onChange={(e) => { handleInputChange(setName, e.target.value as string) }}/>
+            <TextField className='input' label='Name' id="outlined-basic" variant="outlined" value = {name} required onChange={(e) => { handleInputChange(setName, e.target.value as string) }}/>
           </div>
           <div className='input-wrapper'>
-            <TextField className='input' label='Price' id="outlined-basic" variant="outlined" value={price} onChange={(e) => { handleInputChange(setPrice, e.target.value as string) }}/>
+            <TextField className='input' label='Price' id="outlined-basic" variant="outlined" value={price} required onChange={(e) => { handleInputChange(setPrice, e.target.value as string) }}/>
           </div>
           <div className='input-wrapper'>
             <InputLabel id='model-label'>Model</InputLabel>
-            <Select value={model} labelId='model-label' className='input'  onChange={(e) => { handleInputChange(setModel, e.target.value as string) }} >
+            <Select value={model} labelId='model-label' className='input' required  onChange={(e) => { handleInputChange(setModel, e.target.value as string) }} >
               {mapModels}
             </Select>
           </div>
           <div className='input-wrapper'>
-            <TextareaAutosize className='input description' placeholder='Description' rowsMax={10} rowsMin={8} value={description} onChange={(e) => { handleInputChange(setDescription, e.target.value as string) }} />
+            <TextareaAutosize className='input description' placeholder='Description' rowsMax={10} rowsMin={8} value={description} required onChange={(e) => { handleInputChange(setDescription, e.target.value as string) }} />
           </div>
           <div className='input-wrapper'>
             <input
               type="file"
               className='input'
+              required
               onChange={(e) => { handleFileChange(e) }}
             />
           </div>
           <div className='btn-wrapper'>
-            <Button type='submit' className='btn' variant='contained' size='large' color='primary'>{isEdit ? 'Update' : 'Submit'}</Button>
+            <Button disabled={btnState} type='submit' className='btn' variant='contained' size='large' color='primary'>{isEdit ? 'Update' : 'Submit'}</Button>
           </div>
         </form>
       </Container>

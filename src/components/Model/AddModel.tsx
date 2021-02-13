@@ -15,6 +15,7 @@ export default function AddModel(props:any) {
   const [openAlert, setOpenAlert] = useState<boolean>(false)
   const [message, setMessage] = useState('')
   const [severity, setSeverity] = useState<string>('')
+  const [btnState, setBtnState] = useState<boolean>(false)
 
   const handleInputChange = (setFunction : Function , value : string) => {
     setFunction(value)
@@ -46,6 +47,7 @@ export default function AddModel(props:any) {
 
   const onFormSubmit = async (e : React.SyntheticEvent) => {
     e.preventDefault()
+    setBtnState(true)
     const data = { name }
     try{
       if(isEdit){
@@ -62,6 +64,7 @@ export default function AddModel(props:any) {
         }
       }
     }catch(err){
+      setBtnState(false)
       setOpenAlert(true)
       setMessage('Cannot Perform Action')
       setSeverity('error')
@@ -75,10 +78,10 @@ export default function AddModel(props:any) {
         <form autoComplete='false' onSubmit={onFormSubmit}>
           <Typography className='heading' color='primary' variant='h2'>{isEdit ? 'Update Model' : 'Add Model'}</Typography>
           <div className='input-wrapper'>
-            <TextField className='input' label='Name' id="outlined-basic" variant="outlined" value={name} onChange={(e) => { handleInputChange(setName, e.target.value as string) }}/>
+            <TextField className='input' label='Name' id="outlined-basic" variant="outlined" required value={name} onChange={(e) => { handleInputChange(setName, e.target.value as string) }}/>
           </div>
           <div className='btn-wrapper'>
-            <Button type='submit' className='btn' variant='contained' size='large' color='primary'>{isEdit ? 'Update' : 'Submit'}</Button>
+            <Button disabled={btnState} type='submit' className='btn' variant='contained' size='large' color='primary'>{isEdit ? 'Update' : 'Submit'}</Button>
           </div>
         </form>
       </Container>
