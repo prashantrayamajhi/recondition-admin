@@ -3,6 +3,7 @@ import Container from './../Container/Container'
 import { Typography, Button, TextField } from '@material-ui/core'
 import Navbar from './../Navbar/Navbar'
 import Axios from './../api/server'
+import Alert from './../Alert/Alert'
 import { useHistory } from 'react-router-dom'
 
 export default function AddModel(props:any) {
@@ -11,6 +12,9 @@ export default function AddModel(props:any) {
 
   const [name,setName] = useState('')
   const [isEdit, setIsEdit] = useState<boolean>(false)
+  const [openAlert, setOpenAlert] = useState<boolean>(false)
+  const [message, setMessage] = useState('')
+  const [severity, setSeverity] = useState<string>('')
 
   const handleInputChange = (setFunction : Function , value : string) => {
     setFunction(value)
@@ -47,21 +51,26 @@ export default function AddModel(props:any) {
       if(isEdit){
         const res = await Axios.patch('/api/v1/admin/models/'+ props.match.params.id, data, config)
         if (res.status === 200) {
+          setOpenAlert(false)
           history.push('/model')
         }
       }else{
         const res = await Axios.post('/api/v1/admin/models',data, config)
         if(res.status === 201){
+          setOpenAlert(false)
           history.push('/model')
         }
       }
     }catch(err){
-      console.log(err)
+      setOpenAlert(true)
+      setMessage('Cannot Perform Action')
+      setSeverity('error')
     }
   }
   return (
     <>
       <Navbar />
+      <Alert openAlert={openAlert} setOpenAlert={setOpenAlert} message={message} severity={severity} />
       <Container>
         <form autoComplete='false' onSubmit={onFormSubmit}>
           <Typography className='heading' color='primary' variant='h2'>{isEdit ? 'Update Model' : 'Add Model'}</Typography>
