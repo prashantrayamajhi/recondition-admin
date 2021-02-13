@@ -43,7 +43,7 @@ export default function Product() {
     <>
       <Navbar />
       <div className='add-product'>
-        <Link to='/addProduct' className='link'><AddCircle color='primary' style={{ fontSize: 45 }} /></Link>
+        <Link to='/admin/addProduct' className='link'><AddCircle color='primary' style={{ fontSize: 45 }} /></Link>
       </div>
       <div className='products-wrapper'>
         { mappedData }

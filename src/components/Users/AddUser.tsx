@@ -62,12 +62,12 @@ export default function AddUser(props:any) {
       if (isEdit) {
         const res = await Axios.patch('/api/v1/admin/users/' + props.match.params.id, data, config)
         if (res.status === 200) {
-          history.push('/users')
+          history.push('/admin/users')
         }
       } else {
         const res = await Axios.post('/api/v1/admin/auth/signup', data, config)
         if (res.status === 201) {
-          history.push('/users')
+          history.push('/admin/users')
         }
       }
     } catch (err) {

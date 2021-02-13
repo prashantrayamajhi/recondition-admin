@@ -64,7 +64,7 @@ export default function Model() {
       <Navbar />
       <Container>
         <div className='add-model'>
-          <Link to='/addModel' className='link'><AddCircle color='primary' style={{ fontSize: 45 }} /></Link>
+          <Link to='/admin/addModel' className='link'><AddCircle color='primary' style={{ fontSize: 45 }} /></Link>
         </div>
         <TableContainer className='table' component={Paper}>
           <Table aria-label="simple table">

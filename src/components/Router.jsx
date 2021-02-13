@@ -17,17 +17,17 @@ export default function RouterComponent() {
     <>
       <Router>
         <Switch>
-          <Route path="/login" exact component={Login} />
-          <PrivateRoute path="/" exact component={Products} />
-          <PrivateRoute path="/product/:id" exact component={Product} />
-          <PrivateRoute path="/addProduct" exact component={AddProduct} />
-          <PrivateRoute path="/addProduct/update/:id" exact component={AddProduct} />
-          <AdminRoute path="/users" exact component={Users} />
-          <AdminRoute path="/addUser" exact component={AddUser} />
-          <AdminRoute path="/addUser/update/:id" exact component={AddUser} />
-          <PrivateRoute path="/model" exact component={Model} />
-          <PrivateRoute path="/addModel" exact component={AddModel} />
-          <PrivateRoute path="/addModel/update/:id" exact component={AddModel} />
+          <Route path="/admin/login" exact component={Login} />
+          <PrivateRoute path="/admin/" exact component={Products} />
+          <PrivateRoute path="/admin/product/:id" exact component={Product} />
+          <PrivateRoute path="/admin/addProduct" exact component={AddProduct} />
+          <PrivateRoute path="/admin/addProduct/update/:id" exact component={AddProduct} />
+          <AdminRoute path="/admin/users" exact component={Users} />
+          <AdminRoute path="/admin/addUser" exact component={AddUser} />
+          <AdminRoute path="/admin/addUser/update/:id" exact component={AddUser} />
+          <PrivateRoute path="/admin/model" exact component={Model} />
+          <PrivateRoute path="/admin/addModel" exact component={AddModel} />
+          <PrivateRoute path="/admin/addModel/update/:id" exact component={AddModel} />
         </Switch>
       </Router>
     </>
