@@ -21,6 +21,7 @@ export default function AddUser(props:any) {
   const [openAlert, setOpenAlert] = useState<boolean>(false)
   const [message, setMessage] = useState('')
   const [severity, setSeverity] = useState<string>('')
+  const [btnState, setBtnState] = useState<boolean>(false)
 
 
   useEffect(() => {
@@ -55,6 +56,7 @@ export default function AddUser(props:any) {
 
   const onFormSubmit = async (e : React.SyntheticEvent) => {
     e.preventDefault()
+    setBtnState(true)
     const data = { name, email, password, phone, role, address }
     try {
       if (isEdit) {
@@ -69,6 +71,7 @@ export default function AddUser(props:any) {
         }
       }
     } catch (err) {
+      setBtnState(false)
       setOpenAlert(true)
       setMessage('Cannot Perform Action')
       setSeverity('error')
@@ -82,30 +85,30 @@ export default function AddUser(props:any) {
         <form autoComplete='false' onSubmit={onFormSubmit}>
           <Typography className='heading' color='primary' variant='h2'>{isEdit ? 'Update User' : 'Add User'}</Typography>
           <div className='input-wrapper'>
-            <TextField className='input' label='Name'  variant="outlined" value={name} onChange={(e) => { handleInputChange(setName, e.target.value as string) }}/>
+            <TextField className='input' label='Name' variant="outlined" value={name} required onChange={(e) => { handleInputChange(setName, e.target.value as string) }}/>
           </div>
           <div className='input-wrapper'>
-            <TextField className='input' label='Email'  variant="outlined" value={email} onChange={(e) => { handleInputChange(setEmail, e.target.value as string) }}/>
+            <TextField className='input' label='Email' variant="outlined" value={email} required onChange={(e) => { handleInputChange(setEmail, e.target.value as string) }}/>
           </div>
           <div className='input-wrapper'>
-            <TextField className='input' label='Address'  variant="outlined" value={address} onChange={(e) => { handleInputChange(setAddress, e.target.value as string) }} />
+            <TextField className='input' label='Address' variant="outlined" value={address} required onChange={(e) => { handleInputChange(setAddress, e.target.value as string) }} />
           </div>
           {!isEdit ?
             <div className='input-wrapper'>
-              <TextField type='password' className='input' label='Password'  variant="outlined" value={password} onChange={(e) => { handleInputChange(setPassword, e.target.value as string) }}/>
+              <TextField type='password' className='input' label='Password' variant="outlined" required value={password} onChange={(e) => { handleInputChange(setPassword, e.target.value as string) }}/>
             </div> : ''}
           <div className='input-wrapper'>
-            <TextField className='input' label='Phone'  variant="outlined" value={phone} onChange={(e) => { handleInputChange(setPhone, e.target.value as string) }}/>
+            <TextField className='input' label='Phone' variant="outlined" value={phone} required onChange={(e) => { handleInputChange(setPhone, e.target.value as string) }}/>
           </div>
           <div className='input-wrapper'>
             <InputLabel id='type-label'>Role</InputLabel>
-            <Select value={role} labelId='type-label' className='input' onChange={(e) => { handleInputChange(setRole, e.target.value as string) }}>
+            <Select value={role} labelId='type-label' className='input' required onChange={(e) => { handleInputChange(setRole, e.target.value as string) }}>
               <MenuItem value='admin'>Admin</MenuItem>
               <MenuItem value='co-admin'>Co-Admin</MenuItem>
             </Select>
           </div>
           <div className='btn-wrapper'>
-            <Button type='submit' className='btn' variant='contained' size='large' color='primary'>{isEdit ? 'Update' : 'Submit'}</Button>
+            <Button type='submit' disabled={btnState} className='btn' variant='contained' size='large' color='primary'>{isEdit ? 'Update' : 'Submit'}</Button>
           </div>
         </form>
       </Container>
