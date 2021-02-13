@@ -17,7 +17,7 @@ export default function Login() {
 
   useEffect(() => {
     if (localStorage.getItem('userId') && localStorage.getItem('accessToken') && localStorage.getItem('isAuthenticated')) {
-      history.push('/')
+      history.push('/admin/')
     }
   }, [])
 
@@ -38,7 +38,7 @@ export default function Login() {
           localStorage.setItem('isAuthenticated', 'true')
           localStorage.setItem('role', res.data.role)
         }
-        history.push('/')
+        history.push('/admin/')
       }
     } catch (err) {
       setMessage('Invalid Credentials')

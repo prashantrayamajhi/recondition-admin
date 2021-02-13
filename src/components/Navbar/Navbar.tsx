@@ -19,7 +19,7 @@ export default function Navbar() {
     localStorage.removeItem('accessToken')
     localStorage.removeItem('isAuthenticated')
     localStorage.removeItem('role')
-    history.push('/login')
+    history.push('/admin/login')
   }
   // state for responsive navbar
   const [isResponsive, setIsResponsive] = useState(false)
