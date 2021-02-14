@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 import { PrivateRoute, AdminRoute } from './ProtectedRoutes/ProtectedRoutes'
 
 // componets
+import Home from './Home/Home'
 import Products from './Products/Products'
 import Product from './Products/Product'
 import AddProduct from './Products/AddProduct'
@@ -17,6 +18,7 @@ export default function RouterComponent() {
     <>
       <Router>
         <Switch>
+          <Route path="/" exact component={Home} />
           <Route path="/admin/login" exact component={Login} />
           <PrivateRoute path="/admin/" exact component={Products} />
           <PrivateRoute path="/admin/product/:id" exact component={Product} />
