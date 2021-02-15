@@ -38,10 +38,10 @@ export default function HomeNav() {
         </div>
         <div className='nav-list'>
           <Link to='/' className='nav-item'>Home</Link>
-          <Link to='/#about' className='nav-item'>About</Link>
-          <Link to='/#services' className='nav-item'>Services</Link>
+          <a href='/#about' className='nav-item'>About</a>
+          <a href='/#services' className='nav-item'>Services</a>
           <Link to='/products' className='nav-item'>Products</Link>
-          <Link to='' className='nav-item'>Contact</Link>
+          <a href='/#contact' className='nav-item'>Contact</a>
         </div>
       </nav>
     </>
