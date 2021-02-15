@@ -1,0 +1,58 @@
+.banner{
+    position: relative;
+    background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url("./../../images/banner.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: #fff;
+    text-align: center;
+    padding: 10rem 0;
+    .banner-text{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        margin: auto;
+        h1{
+            width: 80%;
+            margin: auto;
+            padding-top: 1rem;
+            font-size: 1,8rem;
+            line-height: 3rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            color: #fff;
+            letter-spacing: 1px;
+            word-spacing: 2px;
+        }
+        .link{
+            .btn{
+                margin-top: 1.5rem;
+                padding: 0.6rem 2.5rem;
+                text-transform: capitalize;
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+@media(max-width:700px){
+    .banner{
+        background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url("./../../images/banner.jpg");   
+        background-size: cover; 
+        .banner-text{
+            h1{
+                font-size: 1.1rem;
+                line-height: 2.2rem;
+                width: 90%;
+                margin: auto;
+            }
+            .link{
+                .btn{
+                    font-size: 0.7rem !important;
+                }
+            }
+        }
+    }
+}
