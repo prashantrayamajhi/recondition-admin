@@ -21,7 +21,7 @@ export default function RouterComponent() {
           <Route path="/" exact component={Home} />
           <Route path="/admin/login" exact component={Login} />
           <PrivateRoute path="/admin/" exact component={Products} />
-          <PrivateRoute path="/admin/product/:id" exact component={Product} />
+          <PrivateRoute path="/product/:id" exact component={Product} />
           <PrivateRoute path="/admin/addProduct" exact component={AddProduct} />
           <PrivateRoute path="/admin/addProduct/update/:id" exact component={AddProduct} />
           <AdminRoute path="/admin/users" exact component={Users} />

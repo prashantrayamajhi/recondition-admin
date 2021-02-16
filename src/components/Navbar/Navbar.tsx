@@ -45,8 +45,8 @@ export default function Navbar() {
     }
   }
   return (
-    <AppBar className='navbar' position='static'>
-      <Toolbar>
+    <AppBar position='static'>
+      <Toolbar className='navbar'>
         <Typography variant="h6" className={ classes.title }>
           Admin Panel
         </Typography>

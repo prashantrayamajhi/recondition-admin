@@ -1,6 +1,6 @@
 .welcome-wrapper{
     position: relative;
-    background: linear-gradient(to right, rgba(0,0,0,0.9),rgba(0,0,0,0.9),rgba(0,0,0,0.8)), url('./../../images/welcome.jpg');
+    background: linear-gradient(to right, rgba(0,0,0,0.91),rgba(0,0,0,0.91),rgba(0,0,0,0.8)), url('./../../images/welcome.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
@@ -21,7 +21,8 @@
         }
         .description{
             font-size: 1.3rem;
-            width: 100%;
+            width: 80%;
+            letter-spacing: 1px;
             line-height: 2rem;
             margin-top: 0.7rem;
         }
@@ -49,6 +50,7 @@
             .description{
                 width: 90%;
                 font-size: 1rem;
+                letter-spacing: normal;
             }
             .link{
                 .btn{

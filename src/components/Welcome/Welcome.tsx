@@ -8,7 +8,7 @@ export default function Welcome() {
       <div className='welcome-text-wrapper'>
         <p className='welcome'>Welcome to</p>
         <h1>Sawari Motors</h1>
-        <p className='description'>Lorem, ipsum dolor sit Magni corrupti, ullam exercitationem asperiores error aspernatur!</p>
+        <p className='description'>We are a reputed automobile organization, we provide one of the best automobile services in Kathmandu. </p>
         <Link to='/#services' className='link' style={{ textDecoration:'none' }}><Button className='btn' variant='contained' color='primary'>Our Services</Button></Link>
       </div>
     </div>
