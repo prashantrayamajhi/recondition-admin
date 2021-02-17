@@ -2,6 +2,7 @@
   background-color: #393b44;
   color: #f1f3f8;
   margin-top: 100px;
+
   .pre-footer {
     padding: 80px;
     display: flex;
@@ -10,10 +11,12 @@
     .about-us {
       width: 40%;
       padding: 0 30px;
+
       h1 {
         font-weight: 400;
         font-size: 26px;
       }
+
       p {
         margin-top: 20px;
         width: 90%;
@@ -23,19 +26,24 @@
         letter-spacing: 1px;
       }
     }
+
     .more-info {
       width: 20%;
       padding: 0 30px;
+
       h1 {
         font-weight: 400;
         letter-spacing: 1px;
         font-size: 26px;
       }
+
       ul {
         margin-top: 20px;
         list-style: none;
+
         li {
           margin-bottom: 10px;
+
           a {
             text-decoration: none;
             color: #f1f3f8;
@@ -44,24 +52,29 @@
         }
       }
     }
+
     .contact-details {
       width: 30%;
       padding: 0 30px;
+
       h1 {
         font-weight: 400;
         margin-bottom: 3 0px;
         font-size: 26px;
       }
+
       .details {
         width: 70%;
         margin-top: 30px;
         display: flex;
         // justify-content: space-between;
         align-items: center;
+
         span {
           font-size: 28px;
           width: 10%;
         }
+
         p {
           font-size: 14px;
           margin-left: 30px;
@@ -70,15 +83,17 @@
       }
     }
   }
+
   .main-footer {
     border-top: 1px solid #000000;
     text-align: center;
     padding-top: 35px;
     padding-bottom: 25px;
+
     h3 {
       color: #ffffff;
       font-weight: 400;
-      font-size: 1rem;
+      font-size: 0.75rem;
       letter-spacing: 1px;
     }
   }
@@ -89,36 +104,45 @@
     .pre-footer {
       padding: 80px 40px !important;
       flex-direction: column;
+
       .about-us {
         width: 100%;
         padding: 0;
+
         h1 {
           font-size: 30px;
         }
+
         p {
           font-size: 14px;
           width: 100% !important;
         }
       }
+
       .more-info {
         margin-top: 50px;
         padding: 0;
         width: 100%;
+
         h1 {
           font-size: 30px;
         }
+
         a {
           font-size: 16px !important;
         }
       }
+
       .contact-details {
         margin-top: 50px;
         padding: 0;
         width: 100%;
         font-size: 18px;
+
         h1 {
           font-size: 30px;
         }
+
         p {
           font-size: 14px !important;
           margin-left: 10px;
@@ -130,7 +154,7 @@
   .main-footer {
     h3 {
       font-weight: 400;
-      font-size: 14px !important;
+      font-size: 0.75rem;
     }
   }
 }
