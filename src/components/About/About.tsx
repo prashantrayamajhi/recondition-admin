@@ -1,5 +1,5 @@
 import './index.scss'
-import AboutImg from './../../images/about.jpg'
+import AboutImg from './../../images/about.webp'
 import { Link } from 'react-router-dom'
 import { Button } from '@material-ui/core'
 import { Check } from '@material-ui/icons'
