@@ -15,7 +15,7 @@
         letter-spacing: 1px;
     }
     .products-wrapper{
-        margin-top: 3.5rem;
+        margin-top: 2rem;
         .card-link{
             text-decoration: none;
             .card-wrapper{
@@ -40,7 +40,7 @@
     .link{
         text-decoration: none;
         .btn{
-            margin-top: 1rem;
+            margin-top: 0.5rem;
             font-size: 0.9rem;
             text-transform: capitalize;
             padding: 0.5rem 2.5rem;
@@ -60,6 +60,25 @@
     .link{
         .btn{
             margin-top: 2rem !important;
+        }
+    }
+}
+
+@media(max-width: 900px){
+    .products-section{
+        .products-wrapper{
+            .card-link{
+                .card-wrapper{
+                    .title-wrapper{
+                        .title{
+                            font-size: 1rem;
+                        }
+                        .price{
+                            font-size: 0.8rem;
+                        }
+                    }
+                }
+            }
         }
     }
 }
