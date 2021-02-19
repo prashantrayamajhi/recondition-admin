@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="pre-footer">
         <div className="about-us">
-          <h1>Eron Group</h1>
+          <h1>Sawati Motors</h1>
           <p>
             We are one of best service providers in Kathmandu. We are
             qualified, experienced and we always thrive to provide the best
