@@ -1,6 +1,6 @@
 .welcome-wrapper{
     position: relative;
-    background: linear-gradient(to right, rgba(0,0,0,0.91),rgba(0,0,0,0.91),rgba(0,0,0,0.8)), url('./../../images/welcome.webp');
+    background: linear-gradient(to right, rgba(0,0,0,0.9),rgba(0,0,0,0.75),rgba(0,0,0,0.5)), url('./../../images/welcome.webp');
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
@@ -21,7 +21,7 @@
         }
         .description{
             font-size: 1.3rem;
-            width: 80%;
+            width: 70%;
             letter-spacing: 1px;
             line-height: 2rem;
             margin-top: 0.7rem;
@@ -40,6 +40,7 @@
 @media(max-width:700px){
     .welcome-wrapper{
         .welcome-text-wrapper{
+            margin-top: 2rem;
             margin-left: 2rem;
             .welcome{
                 font-size: 1.5rem;
@@ -63,7 +64,7 @@
 
 @media(max-width: 600px){
     .welcome-wrapper{
-        height: 60vh;
+        height: 80vh;
         .welcome-text-wrapper{
             margin-left: 1.5rem;
             .welcome{

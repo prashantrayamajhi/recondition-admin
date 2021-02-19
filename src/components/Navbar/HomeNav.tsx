@@ -6,10 +6,8 @@ import { Smartphone, Timer, Facebook, Instagram, Mail } from '@material-ui/icons
 
 export default function HomeNav() {
 
-  const history = useHistory()
-
   // state for responsive navbar
-  const [isResponsive, setIsResponsive] = useState(false)
+  const [isResponsive, setIsResponsive] = useState<boolean>(false)
 
   const toggleResponsive = () => {
     setIsResponsive(!isResponsive)
@@ -39,12 +37,17 @@ export default function HomeNav() {
           <div className='nav-brand'>
             <h2>Logo</h2>
           </div>
-          <div className='nav-list'>
-            <Link to='/' className='nav-item'>Home</Link>
-            <a href='/#about' className='nav-item'>About</a>
-            <a href='/#services' className='nav-item'>Services</a>
-            <Link to='/products' className='nav-item'>Products</Link>
-            <a href='/#contact' className='nav-item'>Contact</a>
+          <div className={`nav-list ${isResponsive ? 'responsive' : ''}`}>
+            <Link to='/' className='nav-item' onClick={toggleResponsive}>Home</Link>
+            <a href='/#about' className='nav-item' onClick={toggleResponsive}>About</a>
+            <a href='/#services' className='nav-item' onClick={toggleResponsive}>Services</a>
+            <Link to='/products' className='nav-item' onClick={toggleResponsive}>Products</Link>
+            <a href='/#contact' className='nav-item' onClick={toggleResponsive}>Contact</a>
+          </div>
+          <div className={`hamburger ${isResponsive ? 'open' : ''}`} onClick={toggleResponsive}>
+            <div className='div1'></div>
+            <div className='div2'></div>
+            <div className='div3'></div>
           </div>
         </div>
       </nav>
