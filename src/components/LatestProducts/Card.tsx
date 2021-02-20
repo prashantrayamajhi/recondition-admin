@@ -1,4 +1,4 @@
-import './index.scss'
+import './Card.scss'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import CardContent from '@material-ui/core/CardContent'
@@ -7,14 +7,14 @@ import Typography from '@material-ui/core/Typography'
 import { Link } from 'react-router-dom'
 
 
-interface card {
+interface CardProps {
     thumbnail: string,
     title: string,
     price: string,
     id: number
 }
 
-export default function CardComponent(cardObj: card) {
+export default function CardComponent(props: CardProps) {
 
   return (
     <Link to='' className='card-link'>
@@ -23,14 +23,14 @@ export default function CardComponent(cardObj: card) {
           <CardActionArea>
             <CardMedia
               className='img'
-              image={`http://localhost:8080/images/${cardObj.thumbnail}`}
+              image={`http://localhost:8080/images/${props.thumbnail}`}
             />
             <CardContent className='title-wrapper' >
               <Typography className='title' variant="h4" >
-                {cardObj.title}
+                {props.title}
               </Typography>
               <Typography className='price' variant="h4">
-                Rs.{cardObj.price}
+                Rs.{props.price}
               </Typography>
             </CardContent>
           </CardActionArea>

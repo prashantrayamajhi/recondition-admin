@@ -1,4 +1,4 @@
-import './index.scss'
+import './Card.scss'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import CardActions from '@material-ui/core/CardActions'
@@ -12,14 +12,14 @@ import ModalComponent from './../modal/Modal'
 import { useState } from 'react'
 
 
-interface card {
+interface CardProps {
     thumbnail : string,
     title : string,
     price : string,
     id: number
 }
 
-export default function CardComponent(cardObj : card) {
+export default function CardComponent(cardObj : CardProps) {
   const [modal, setModal] = useState<boolean>(false)
 
   const toggleModal = () => {

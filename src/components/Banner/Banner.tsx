@@ -1,4 +1,4 @@
-import './index.scss'
+import './Banner.scss'
 import { Button } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 

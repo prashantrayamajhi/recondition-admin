@@ -1,11 +1,13 @@
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
 import Alert from '@material-ui/lab/Alert'
+import { Color } from '../../entity/Color'
 
-interface AlertInterface {
-    openAlert : boolean,
-    setOpenAlert : Function,
-    severity : any,
-    message : string
+
+interface AlertProps {
+  openAlert: boolean,
+  setOpenAlert: Function,
+  severity: Color,
+  message: string
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -13,27 +15,27 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       width: '100%',
       '& > * + *': {
-        marginTop: theme.spacing(2),
-      },
-    },
-  }),
+        marginTop: theme.spacing(2)
+      }
+    }
+  })
 )
 
-export default function AlertComponent(alert : AlertInterface) {
+export default function AlertComponent(alert: AlertProps) {
 
   const classes = useStyles()
-  if(alert.openAlert){
+  if (alert.openAlert) {
     window.setTimeout(() => {
       alert.setOpenAlert(false)
     }, 5000)
     return (
-      <>
-        <div className={classes.root}>
-          <Alert severity={alert.severity} onClose={() => {alert.setOpenAlert(false)}}>{alert.message}</Alert>
-        </div>
-      </>
+      <div className={classes.root}>
+        <Alert severity={alert.severity} onClose={() => {
+          alert.setOpenAlert(false)
+        }}>{alert.message}</Alert>
+      </div>
     )
-  }else{
+  } else {
     return <></>
   }
 }

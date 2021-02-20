@@ -1,11 +1,11 @@
 import React from 'react'
-import './index.scss'
+import './Container.scss'
 
-interface container {
+interface ContainerProps {
     children : React.ReactNode
 }
 
-export default function Container(containerObj : container) {
+export default function Container(containerObj : ContainerProps) {
   return (
     <div className="container">
       { containerObj.children }

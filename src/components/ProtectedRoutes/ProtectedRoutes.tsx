@@ -1,5 +1,7 @@
 import { Route, Redirect } from 'react-router-dom'
 
+//TODO remove any
+
 const PrivateRoute = ({ component: Component, ...rest }: any) => {
 
   return (

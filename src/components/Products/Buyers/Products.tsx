@@ -5,9 +5,10 @@ import Card from './../../LatestProducts/Card'
 import Navbar from './../../Navbar/HomeNav'
 import Axios from '../../../api/server'
 import Footer from './../../Footer/Footer'
+import ProductEntity from '../../../entity/ProductEntity'
 
 export default function Product() {
-  const [products, setProducts] = useState<any>([])
+  const [products, setProducts] = useState<ProductEntity[]>([])
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -17,11 +18,12 @@ export default function Product() {
         console.log(err)
       }
     }
-    fetchData()
+    fetchData().then()
   }, [])
 
-  const mappedData = products.slice(0).reverse().map((product: any, index: number) => {
-    return <Card key={index} id={product._id} title={product.name} thumbnail={product.thumbnail} price={product.price} />
+  const mappedData = products.slice(0).reverse().map((product: ProductEntity, index: number) => {
+    return <Card key={product._id} id={index} title={product.name} thumbnail={product.thumbnail}
+      price={product.price} />
   })
 
   return (

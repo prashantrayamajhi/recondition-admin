@@ -1,23 +1,28 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Container from './../Container/Container'
 import { Typography, Button, TextField } from '@material-ui/core'
 import Navbar from './../Navbar/Navbar'
 import Axios from '../../api/server'
 import Alert from './../Alert/Alert'
 import { useHistory } from 'react-router-dom'
+import ModelEntity from '../../entity/ModelEntity'
+import MatchParamsId from '../../entity/MatchParamId'
+import { Color } from '../../entity/Color'
 
-export default function AddModel(props:any) {
+//TODO remove any
+
+export default function AddModel(props: ModelEntity & MatchParamsId) {
 
   const history = useHistory()
 
-  const [name,setName] = useState('')
+  const [name, setName] = useState('')
   const [isEdit, setIsEdit] = useState<boolean>(false)
   const [openAlert, setOpenAlert] = useState<boolean>(false)
   const [message, setMessage] = useState('')
-  const [severity, setSeverity] = useState<string>('')
+  const [severity, setSeverity] = useState<Color>('success')
   const [btnState, setBtnState] = useState<boolean>(false)
 
-  const handleInputChange = (setFunction : Function , value : string) => {
+  const handleInputChange = (setFunction: Function, value: string) => {
     setFunction(value)
   }
 
@@ -31,39 +36,39 @@ export default function AddModel(props:any) {
   useEffect(() => {
     const id = props.match.params.id
     const fetchData = async () => {
-      try{
-        const res = await Axios.get('/api/v1/admin/models/'+id, config)
+      try {
+        const res = await Axios.get('/api/v1/admin/models/' + id, config)
         setName(res.data.data.name)
-      }catch(err){
+      } catch (err) {
         console.log(err)
       }
     }
-    if(id){
+    if (id) {
       setIsEdit(true)
-      fetchData()
+      fetchData().then()
     }
 
-  },[])
+  }, [])
 
-  const onFormSubmit = async (e : React.SyntheticEvent) => {
+  const onFormSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault()
     setBtnState(true)
     const data = { name }
-    try{
-      if(isEdit){
-        const res = await Axios.patch('/api/v1/admin/models/'+ props.match.params.id, data, config)
+    try {
+      if (isEdit) {
+        const res = await Axios.patch('/api/v1/admin/models/' + props.match.params.id, data, config)
         if (res.status === 200) {
           setOpenAlert(false)
           history.push('/admin/model')
         }
-      }else{
-        const res = await Axios.post('/api/v1/admin/models',data, config)
-        if(res.status === 201){
+      } else {
+        const res = await Axios.post('/api/v1/admin/models', data, config)
+        if (res.status === 201) {
           setOpenAlert(false)
           history.push('/admin/model')
         }
       }
-    }catch(err){
+    } catch (err) {
       setBtnState(false)
       setOpenAlert(true)
       setMessage('Cannot Perform Action')
@@ -76,12 +81,17 @@ export default function AddModel(props:any) {
       <Alert openAlert={openAlert} setOpenAlert={setOpenAlert} message={message} severity={severity} />
       <Container>
         <form autoComplete='false' onSubmit={onFormSubmit}>
-          <Typography className='heading' color='primary' variant='h2'>{isEdit ? 'Update Model' : 'Add Model'}</Typography>
+          <Typography className='heading' color='primary'
+            variant='h2'>{isEdit ? 'Update Model' : 'Add Model'}</Typography>
           <div className='input-wrapper'>
-            <TextField className='input' label='Name' id="outlined-basic" variant="outlined" required value={name} onChange={(e) => { handleInputChange(setName, e.target.value as string) }}/>
+            <TextField className='input' label='Name' id='outlined-basic' variant='outlined' required value={name}
+              onChange={(e) => {
+                handleInputChange(setName, e.target.value as string)
+              }} />
           </div>
           <div className='btn-wrapper'>
-            <Button disabled={btnState} type='submit' className='btn' variant='contained' size='large' color='primary'>{isEdit ? 'Update' : 'Submit'}</Button>
+            <Button disabled={btnState} type='submit' className='btn' variant='contained' size='large'
+              color='primary'>{isEdit ? 'Update' : 'Submit'}</Button>
           </div>
         </form>
       </Container>

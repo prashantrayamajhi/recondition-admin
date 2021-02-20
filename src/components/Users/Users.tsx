@@ -1,4 +1,4 @@
-import './index.scss'
+import './Users.scss'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
@@ -7,17 +7,18 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
-import { Edit, Delete, AddCircle } from '@material-ui/icons'
+import { AddCircle, Delete, Edit } from '@material-ui/icons'
 import Navbar from './../Navbar/Navbar'
 import { Link } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import ModalComponent from './../modal/Modal'
 import Axios from '../../api/server'
+import UserEntity from '../../entity/UserEntity'
 
 export default function Users() {
   const [modal, setModal] = useState<boolean>(false)
-  const [users, setUser] = useState<any>([])
-  const [id, setId] = useState<number>()
+  const [users, setUser] = useState<UserEntity[]>([])
+  const [id, setId] = useState<string>()
 
   const config = {
     headers: {
@@ -33,20 +34,20 @@ export default function Users() {
         console.log(err)
       }
     }
-    fetchUsers()
+    fetchUsers().then(() => {})
   }, [])
 
-  const toggleModal = (id: number) => {
+  const toggleModal = (id: string) => {
     setModal(prev => !prev)
     handleId(id)
   }
 
-  const handleId = (id: number) => {
+  const handleId = (id: string) => {
     setId(id)
   }
 
   let sn: number = 0
-  const mappedData = users.map((user: any) => {
+  const mappedData = users.map((user: UserEntity) => {
     sn++
     return (
       <TableRow key={user._id}>

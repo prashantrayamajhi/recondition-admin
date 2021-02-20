@@ -4,10 +4,11 @@ import Card from './Card'
 import { Link } from 'react-router-dom'
 import { Button } from '@material-ui/core'
 import './../Products/index.scss'
-import './index.scss'
+import './Card.scss'
+import ProductEntity from '../../entity/ProductEntity'
 
 export default function LatestProducts() {
-  const [products, setProducts] = useState<any>([])
+  const [products, setProducts] = useState<ProductEntity[]>([])
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -19,8 +20,8 @@ export default function LatestProducts() {
     }
     fetchData()
   }, [])
-  const mappedData = products.slice(0).reverse().map((product: any, index: number) => {
-    return <Card key={index} id={product._id} title={product.name} thumbnail={product.thumbnail} price={product.price} />
+  const mappedData = products.slice(0).reverse().map((product: ProductEntity, index: number) => {
+    return <Card key={product._id} id={index} title={product.name} thumbnail={product.thumbnail} price={product.price} />
   })
   return (
     <>

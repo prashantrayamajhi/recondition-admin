@@ -2,7 +2,6 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { Switch, Route } from 'react-router-dom'
 import { PrivateRoute, AdminRoute } from './ProtectedRoutes/ProtectedRoutes'
 
-// componets
 import Home from './Home/Home'
 import Products from './Products/Products'
 import HomeProducts from './Products/Buyers/Products'

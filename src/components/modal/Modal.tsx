@@ -1,16 +1,16 @@
 import { Button, Typography } from '@material-ui/core'
 import ReactDOM from 'react-dom'
 import Axios from '../../api/server'
-import './index.scss'
+import './Modal.scss'
 
-interface modal {
+interface ModalProps {
     isOpen : boolean,
-    setOpen : any,
+    setOpen : (status: boolean) => void,
     title: string,
     link : string
 }
 
-export default function ModalComponent(modalObj : modal) {
+export default function ModalComponent(modalObj : ModalProps) {
 
   const handleClose = () => {
     modalObj.setOpen(!modalObj.isOpen)

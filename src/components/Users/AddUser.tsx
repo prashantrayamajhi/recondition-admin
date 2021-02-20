@@ -1,13 +1,16 @@
-import './index.scss'
-import { useState, useEffect } from 'react'
+import './Users.scss'
+import React, { useEffect, useState } from 'react'
 import Container from './../Container/Container'
-import { Select, MenuItem, Typography, Button, TextField, InputLabel, Input } from '@material-ui/core'
+import { Button, InputLabel, MenuItem, Select, TextField, Typography } from '@material-ui/core'
 import Navbar from './../Navbar/Navbar'
 import { useHistory } from 'react-router-dom'
 import Alert from './../Alert/Alert'
 import Axios from '../../api/server'
+import UserEntity from '../../entity/UserEntity'
+import MatchParamId from '../../entity/MatchParamId'
+import { Color } from '../../entity/Color'
 
-export default function AddUser(props:any) {
+export default function AddUser(props: UserEntity & MatchParamId) {
 
   const history = useHistory()
   const [isEdit, setIsEdit] = useState<boolean>(false)
@@ -20,7 +23,7 @@ export default function AddUser(props:any) {
   const [address, setAddress] = useState('')
   const [openAlert, setOpenAlert] = useState<boolean>(false)
   const [message, setMessage] = useState('')
-  const [severity, setSeverity] = useState<string>('')
+  const [severity, setSeverity] = useState<Color>('success')
   const [btnState, setBtnState] = useState<boolean>(false)
 
 
@@ -40,7 +43,7 @@ export default function AddUser(props:any) {
     }
     if (id) {
       setIsEdit(true)
-      fetchData()
+      fetchData().then()
     }
 
   }, [])

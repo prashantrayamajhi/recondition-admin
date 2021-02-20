@@ -1,4 +1,4 @@
-import './index.scss'
+import './About.scss'
 import AboutImg from './../../images/about.webp'
 import { Link } from 'react-router-dom'
 import { Button } from '@material-ui/core'
