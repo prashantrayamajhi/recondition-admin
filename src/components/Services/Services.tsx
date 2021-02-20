@@ -5,7 +5,7 @@ const services = [
   {
     id : 1,
     icon : <DriveEta className='icon' color='primary'  />,
-    title : 'Sell Cars',
+    title : 'Sell & Exchange Cars',
     description : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil recusandae minus at quasi, consequatur delectus.'
   },
   {
@@ -28,7 +28,7 @@ const mappedData = services.map(service => {
 
 export default function Services() {
   return (
-    <section id='#services' className='services-wrapper'>
+    <section id='services' className='services-wrapper'>
       <h2>Our Services</h2>
       <p>We sell variety of used cars and provide quality reconditiong services.</p>
       <div className='services'>

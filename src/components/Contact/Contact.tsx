@@ -3,7 +3,7 @@ import './index.scss'
 
 export default function Contact() {
   return (
-    <section className='contact-section'>
+    <section className='contact-section' id='contact'>
       <h2>Contact Us</h2>
       <p>You can contact us in person at any working hour.</p>
       <div className='contact-wrapper'>

@@ -6,7 +6,7 @@ import { Check } from '@material-ui/icons'
 
 export default function About() {
   return (
-    <section className='about-wrapper' id="#about">
+    <section className='about-wrapper' id="about">
       <h2>What we do ?</h2>
       <p>We provide excellent car reconditiong service and sell used cars.</p>
       <div className='about-main'>
