@@ -5,18 +5,19 @@
 }
 
 .products-wrapper {
-  padding: 1rem 3rem 3rem;
+  padding: 3rem;
   display: grid;
   grid-gap: 2.5rem;
   grid-template-columns: repeat(3, 1fr);
   justify-content: center;
+  margin-top: 0.5rem;
 }
 
 form {
   display: flex;
   flex-direction: column;
   width: 90%;
-  margin: auto;
+  margin: 4rem auto;
 
   .heading {
     text-align: center;
@@ -33,7 +34,7 @@ form {
       width: 100%;
       font-size: 1rem;
 
-      &.descriptionbo {
+      &.description{
         padding: 0.5rem;
       }
     }
@@ -41,7 +42,6 @@ form {
 
   .btn-wrapper {
     text-align: end;
-
     .btn {
       width: 30% !important;
     }
@@ -57,7 +57,7 @@ form {
 
 @media (max-width: 800px) {
   .products-wrapper {
-    padding: 1rem 2rem 0;
+    padding: 2.5rem 2rem;
   }
   form {
     .btn-wrapper {

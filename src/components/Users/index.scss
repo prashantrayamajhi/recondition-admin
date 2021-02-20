@@ -8,14 +8,21 @@
   margin: 3rem auto;
   margin-top: 1.3rem;
   .actions {
+    vertical-align: center;
     .btn {
       margin: 0.2rem;
+      padding: 0.2rem 1rem;
       .icon {
         font-size: 1.1rem;
       }
     }
     .link {
-      text-decoration: none;
+      .btn{
+        margin: 0.2rem !important;
+        .icon{
+          font-size: 1.1rem;
+        }
+      }
     }
   }
 }

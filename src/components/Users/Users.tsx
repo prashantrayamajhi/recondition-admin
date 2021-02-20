@@ -56,8 +56,11 @@ export default function Users() {
         <TableCell align='center'>{user.phone}</TableCell>
         <TableCell align='center'>{user.address}</TableCell>
         <TableCell align='center'>{user.role}</TableCell>
-        <TableCell align='center' className='actions'><Link className='link' to={`/admin/     addUser/update/${user._id}`}><Button className='btn' variant='contained' size='small' style={{ backgroundColor: 'lightseagreen' }}><Edit className='icon' /></Button></Link>
-          <Button className='btn' variant='contained' color='secondary' size='small' onClick={() => { toggleModal(user._id) }}><Delete className='icon' /></Button></TableCell>
+        <TableCell align='center' className='actions'>
+          {/* <Button className='btn' variant='contained' size='small' style={{ backgroundColor: 'lightseagreen' }}><Edit className='icon' /></Button> */}
+          <Link className='link' to={`/admin/addUser/update/${user._id}`}><Button className='btn' variant='contained' size='small' style={{ backgroundColor: 'lightseagreen' }}><Edit className='icon' /></Button></Link>
+          <Button className='btn' variant='contained' color='secondary' size='small' onClick={() => { toggleModal(user._id) }}><Delete className='icon' /></Button>
+        </TableCell>
       </TableRow>
     )
   })
