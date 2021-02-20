@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Axios from './../api/server'
+import Axios from '../../api/server'
 import Card from './Card'
 import { Link } from 'react-router-dom'
 import { Button } from '@material-ui/core'

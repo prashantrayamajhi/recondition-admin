@@ -1,6 +1,6 @@
 import { Button, Typography } from '@material-ui/core'
 import ReactDOM from 'react-dom'
-import Axios from './../api/server'
+import Axios from '../../api/server'
 import './index.scss'
 
 interface modal {

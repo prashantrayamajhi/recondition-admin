@@ -1,7 +1,7 @@
 import './index.scss'
 import Navbar from './../Navbar/Navbar'
 import { useEffect, useState } from 'react'
-import Axios from './../api/server'
+import Axios from '../../api/server'
 import './Product.scss'
 
 export default function Product(props : any) {

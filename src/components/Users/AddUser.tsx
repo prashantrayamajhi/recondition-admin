@@ -5,7 +5,7 @@ import { Select, MenuItem, Typography, Button, TextField, InputLabel, Input } fr
 import Navbar from './../Navbar/Navbar'
 import { useHistory } from 'react-router-dom'
 import Alert from './../Alert/Alert'
-import Axios from './../api/server'
+import Axios from '../../api/server'
 
 export default function AddUser(props:any) {
 

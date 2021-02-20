@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import Container from './../Container/Container'
 import { Typography, Button, TextField } from '@material-ui/core'
 import Navbar from './../Navbar/Navbar'
-import Axios from './../api/server'
+import Axios from '../../api/server'
 import Alert from './../Alert/Alert'
 import { useHistory } from 'react-router-dom'
 

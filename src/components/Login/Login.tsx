@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import Container from './../Container/Container'
 import { TextField, Typography, Button } from '@material-ui/core'
-import Axios from './../api/server'
+import Axios from '../../api/server'
 import Alert from './../Alert/Alert'
 
 export default function Login() {

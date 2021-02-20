@@ -3,7 +3,7 @@ import './index.scss'
 import { useState, useEffect } from 'react'
 import Card from './../../LatestProducts/Card'
 import Navbar from './../../Navbar/HomeNav'
-import Axios from './../../api/server'
+import Axios from '../../../api/server'
 import Footer from './../../Footer/Footer'
 
 export default function Product() {

@@ -4,7 +4,7 @@ import Card from './../Card/Card'
 import { Link } from 'react-router-dom'
 import { AddCircle } from '@material-ui/icons'
 import Navbar from './../Navbar/Navbar'
-import Axios from './../api/server'
+import Axios from '../../api/server'
 
 interface ProductsInterface {
   name : string,

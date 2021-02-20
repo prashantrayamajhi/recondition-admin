@@ -12,7 +12,7 @@ import Navbar from './../Navbar/Navbar'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import ModalComponent from './../modal/Modal'
-import Axios from './../api/server'
+import Axios from '../../api/server'
 
 export default function Users() {
   const [modal, setModal] = useState<boolean>(false)

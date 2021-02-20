@@ -13,7 +13,7 @@ import Container from './../Container/Container'
 import { Link } from 'react-router-dom'
 import ModalComponent from './../modal/Modal'
 import './index.scss'
-import Axios from './../api/server'
+import Axios from '../../api/server'
 
 export default function Model() {
   const [modal, setModal] = useState<boolean>(false)
