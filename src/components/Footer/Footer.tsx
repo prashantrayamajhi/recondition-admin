@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="pre-footer">
         <div className="about-us">
-          <h1>Sawati Motors</h1>
+          <p className='footer-heading'>Sawari Motors</p>
           <p>
             We are one of best service providers in Kathmandu. We are
             qualified, experienced and we always thrive to provide the best
@@ -14,7 +14,7 @@ export default function Footer() {
           </p>
         </div>
         <div className="more-info">
-          <h1>Links</h1>
+          <p className='footer-heading'>Links</p>
           <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -24,7 +24,7 @@ export default function Footer() {
           </ul>
         </div>
         <div className="contact-details">
-          <h1>Have Questions ?</h1>
+          <p className='footer-heading'>Have Questions ?</p>
           <div className="details">
             <Map color='inherit'/>
             <p>Kathmandu, Kalimati</p>

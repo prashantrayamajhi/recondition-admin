@@ -1,23 +1,7 @@
-.products-section{
-    margin: 4rem 0rem;
-    background-color: #f7f7f7;
-    padding: 3rem 0;
-    text-align: center;
-    h2{
-        text-align: center;
-        font-size: 2.8rem;
-        color: #222831;
-    }
-    p{
-        text-align: center;
-        font-size: 1.35rem;
-        margin: 0.8rem 0;
-        letter-spacing: 1px;
-    }
     .products-wrapper{
         margin-top: 2rem;
         .card-link{
-            text-decoration: none;
+            text-decoration: none !important;
             .card-wrapper{
                 .title-wrapper{
                     display: flex;
@@ -45,6 +29,22 @@
             text-transform: capitalize;
             padding: 0.5rem 2.5rem;
         }
+    }
+.products-section{
+    margin: 4rem 0rem;
+    background-color: #f7f7f7;
+    padding: 3rem 0;
+    text-align: center;
+    h2{
+        text-align: center;
+        font-size: 2.8rem;
+        color: #222831;
+    }
+    p{
+        text-align: center;
+        font-size: 1.35rem;
+        margin: 0.8rem 0;
+        letter-spacing: 1px;
     }
 }
 

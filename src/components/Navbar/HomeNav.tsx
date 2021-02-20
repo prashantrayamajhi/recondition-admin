@@ -1,8 +1,9 @@
 import './HomeNav.scss'
 
 import { useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Smartphone, Timer, Facebook, Instagram, Mail } from '@material-ui/icons'
+
 
 export default function HomeNav() {
 

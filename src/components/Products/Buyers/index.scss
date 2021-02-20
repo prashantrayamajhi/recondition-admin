@@ -1,0 +1,9 @@
+.products-wrapper{
+    position: relative;
+    background-color: #f7f7f7;
+}
+@media(max-width: 950px){
+    .products-wrapper.buyers{
+            margin-top: 4.5rem !important;
+        }
+}

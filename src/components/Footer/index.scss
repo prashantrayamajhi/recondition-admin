@@ -5,16 +5,17 @@
     padding: 80px;
     display: flex;
     justify-content: space-evenly;
-
+      .footer-heading {
+        font-weight: 400;
+        font-size: 1.5rem;
+      }
     .about-us {
       width: 40%;
       padding: 0 30px;
-
-      h1 {
+            .footer-heading {
         font-weight: 400;
-        font-size: 26px;
+        font-size: 2rem;
       }
-
       p {
         margin-top: 20px;
         width: 90%;
@@ -23,6 +24,7 @@
         font-weight: 400;
         letter-spacing: 1px;
       }
+
     }
 
     .more-info {
