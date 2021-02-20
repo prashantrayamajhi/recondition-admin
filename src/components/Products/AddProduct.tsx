@@ -43,7 +43,6 @@ export default function AddProduct(props:any) {
     const fetchData = async () => {
       try {
         const res = await Axios.get('/api/v1/admin/products/' + id, config)
-        console.log(res)
         setName(res.data.data.name)
         setPrice(res.data.data.price)
         setModel(res.data.data.model)

@@ -14,8 +14,10 @@
     }
     .contact-wrapper{
         display: flex;
-        width: 90%;
+        align-items: center;
+        width: 95%;
         margin: 3.5rem auto;
+        // margin-top: 1rem;
         .map{
             width: 100%;
             .frame{
@@ -23,8 +25,8 @@
                 height: 28rem;
             }
         }
-        .contact-details{
-            width: 90%;
+        .contact-form{
+            width: 100%;
             text-align: center;
             font-size: 2rem;
         }
@@ -41,6 +43,7 @@
         }
         .contact-wrapper{
             flex-direction: column;
+            margin-top: 3.5rem;
             .contact-details{
                 margin-top: 2rem;
             }
