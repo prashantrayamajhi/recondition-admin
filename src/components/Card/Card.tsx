@@ -16,7 +16,7 @@ interface CardProps {
     thumbnail : string,
     title : string,
     price : string,
-    id: number
+    id: string
 }
 
 export default function CardComponent(cardObj : CardProps) {

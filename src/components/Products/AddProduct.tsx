@@ -18,7 +18,7 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
 
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
-  const [thumbnail, setThumbnail] = useState<File>()
+  const [image, setImage] = useState<any>([])
   const [model, setModel] = useState('')
   const [modelList, setModelList] = useState<ModelEntity[]>([])
   const [description, setDescription] = useState('')
@@ -33,7 +33,7 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
   }
 
   const handleFileChange = (e: any) => {
-    setThumbnail(e.target.files[0])
+    setImage(e.target.files)
   }
 
   const config = {
@@ -52,7 +52,7 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
         setPrice(res.data.data.price)
         setModel(res.data.data.model)
         setDescription(res.data.data.description)
-        setThumbnail(res.data.data.thumbnail)
+        setImage(res.data.data.image[0])
       } catch (err) {
         console.log(err)
       }
@@ -69,7 +69,6 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
       try {
         const id = props.match.params.id
         const res = await Axios.get('/api/v1/admin/products/' + id, config)
-        console.log(res.data.data)
       } catch (err) {
         console.log(err)
       }
@@ -100,8 +99,10 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
     let formData = new FormData()
     formData.append('name', name)
     formData.append('price', price)
-    if (thumbnail) {
-      formData.append('thumbnail', thumbnail)
+    if (image) {
+      for (const key of Object.keys(image)) {
+        formData.append('image', image[key])
+      }
     }
     formData.append('model', model)
     formData.append('description', description)
@@ -168,6 +169,7 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
               onChange={(e) => {
                 handleFileChange(e)
               }}
+              multiple
             />
           </div>
           <div className='btn-wrapper'>
