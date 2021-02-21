@@ -42,7 +42,7 @@ export default function Product(props: ProductProps) {
       <Navbar />
       <div className='product-wrapper'>
         <div className='image-wrapper'>
-          <img src={`http://localhost:8080/images/${product!.thumbnail}`} alt={product!.name} />
+          {/* <img src={`http://localhost:8080/images/${product!.thumbnail}`} alt={product!.name} /> */}
         </div>
         <div className='details-wrapper'>
           <h2>{product!.name}</h2>

@@ -15,7 +15,7 @@ interface CardProps {
 }
 
 export default function CardComponent(props: CardProps) {
-
+  console.log(props.thumbnail)
   return (
     <Link to='' className='card-link'>
       <div>
