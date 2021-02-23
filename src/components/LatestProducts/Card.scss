@@ -1,53 +1,50 @@
-    .products-wrapper{
-        margin-top: 2rem;
-        .card-link{
-            text-decoration: none !important;
-            .card-wrapper{
-                .title-wrapper{
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    .title{
-                        font-size: 1.4rem;
-                        color: #222831;
-                    }
-                    .price{
-                        font-size: 1rem;
-                        font-weight: 600;
-                        color: #214151;
+.products-section{
+        background-color: #f7f7f7;
+        padding: 3rem 0;
+        text-align: center;
+        h2{
+            text-align: center;
+            font-size: 2.8rem;
+            color: #222831;
+        }
+        p{
+            text-align: center;
+            font-size: 1.35rem;
+            margin: 0.8rem 0;
+            letter-spacing: 1px;
+        }
+        .latest-products-wrapper{
+            .card-link{
+                text-decoration: none !important;
+                .card-wrapper{
+                    margin: 2rem 0;
+                    .title-wrapper{
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        .title{
+                            font-size: 1.4rem;
+                            color: #222831;
+                        }
+                        .price{
+                            font-size: 1rem;
+                            font-weight: 600;
+                            color: #214151;
+                        }
                     }
                 }
             }
-
-        }
     }
+}
     .link{
         text-decoration: none;
         .btn{
-            margin-top: 0.5rem;
+            margin-top: 2.5rem;
             font-size: 0.9rem;
             text-transform: capitalize;
             padding: 0.5rem 2.5rem;
         }
     }
-.products-section{
-    margin: 4rem 0rem;
-    background-color: #f7f7f7;
-    padding: 3rem 0;
-    text-align: center;
-    h2{
-        text-align: center;
-        font-size: 2.8rem;
-        color: #222831;
-    }
-    p{
-        text-align: center;
-        font-size: 1.35rem;
-        margin: 0.8rem 0;
-        letter-spacing: 1px;
-    }
-}
-
 @media(max-width:1200px){
     .products-section{
         h2{
@@ -83,7 +80,7 @@
     }
 }
 
-@media(max-width: 750px){
+@media(max-width: 768px){
     .products-section{
         p, h2{
             width: 90%;
@@ -92,6 +89,13 @@
         }
         h2{
             font-size: 1.8rem;
+        }
+    }
+    .link{
+        .btn{
+            padding: 0.5rem 2.5rem;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
         }
     }
 }
