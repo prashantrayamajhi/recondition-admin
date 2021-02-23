@@ -12,11 +12,11 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <Welcome />
+      {/* <Welcome /> */}
       <About />
       <Banner />
       <Services />
-      <LatestProduct />
+      {/* <LatestProduct /> */}
       <Testimonials />
       <Contact />
       <Footer />
