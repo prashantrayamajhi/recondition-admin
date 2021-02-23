@@ -20,6 +20,9 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
   const [price, setPrice] = useState('')
   const [image, setImage] = useState<any>([])
   const [model, setModel] = useState('')
+  const [option, setOption] = useState('')
+  const [color, setColor] = useState('')
+  const [km, setKm] = useState('')
   const [modelList, setModelList] = useState<ModelEntity[]>([])
   const [description, setDescription] = useState('')
   const [isEdit, setIsEdit] = useState<boolean>(false)
@@ -51,6 +54,9 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
         setName(res.data.data.name)
         setPrice(res.data.data.price)
         setModel(res.data.data.model)
+        setOption(res.data.data.option)
+        setColor(res.data.data.color)
+        setKm(res.data.data.km)
         setDescription(res.data.data.description)
         setImage(res.data.data.image[0])
       } catch (err) {
@@ -105,6 +111,9 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
       }
     }
     formData.append('model', model)
+    formData.append('option', option)
+    formData.append('color', color)
+    formData.append('km', km)
     formData.append('description', description)
     try {
       if (isEdit) {
@@ -115,7 +124,17 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
       } else {
         const res = await Axios.post('/api/v1/admin/products', formData, config)
         if (res.status === 201) {
-          history.push('/admin/')
+          setName('')
+          setPrice('')
+          setImage('')
+          setOption('')
+          setColor('')
+          setKm('')
+          setDescription('')
+          setBtnState(false)
+          setOpenAlert(true)
+          setSeverity('success')
+          setMessage('Product added successfully')
         }
       }
     } catch (err) {
@@ -148,12 +167,36 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
               }} />
           </div>
           <div className='input-wrapper'>
+            <TextField className='input' label='Model' id='outlined-basic' variant='outlined' value={model} required
+              onChange={(e) => {
+                handleInputChange(setModel, e.target.value as string)
+              }} />
+          </div>
+          {/* <div className='input-wrapper'>
             <InputLabel id='model-label'>Model</InputLabel>
             <Select value={model} labelId='model-label' className='input' required onChange={(e) => {
               handleInputChange(setModel, e.target.value as string)
             }}>
               {mapModels}
             </Select>
+          </div> */}
+          <div className='input-wrapper'>
+            <TextField className='input' label='Option' id='outlined-basic' variant='outlined' value={option}
+              onChange={(e) => {
+                handleInputChange(setOption, e.target.value as string)
+              }} />
+          </div>
+          <div className='input-wrapper'>
+            <TextField className='input' label='Color' id='outlined-basic' variant='outlined' value={color} required
+              onChange={(e) => {
+                handleInputChange(setColor, e.target.value as string)
+              }} />
+          </div>
+          <div className='input-wrapper'>
+            <TextField className='input' label='Kilometers' id='outlined-basic' variant='outlined' value={km} required
+              onChange={(e) => {
+                handleInputChange(setKm, e.target.value as string)
+              }} />
           </div>
           <div className='input-wrapper'>
             <TextareaAutosize className='input description' placeholder='Description' rowsMax={10} rowsMin={8}
