@@ -1,7 +1,7 @@
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
 import Alert from '@material-ui/lab/Alert'
 import { Color } from '../../entity/Color'
-
+import './Alert.scss'
 
 interface AlertProps {
   openAlert: boolean,
@@ -25,12 +25,9 @@ export default function AlertComponent(alert: AlertProps) {
 
   const classes = useStyles()
   if (alert.openAlert) {
-    window.setTimeout(() => {
-      alert.setOpenAlert(false)
-    }, 5000)
     return (
-      <div className={classes.root}>
-        <Alert severity={alert.severity} onClose={() => {
+      <div className='alert-wrapper'>
+        <Alert className='alert' severity={alert.severity} onClose={() => {
           alert.setOpenAlert(false)
         }}>{alert.message}</Alert>
       </div>

@@ -1,6 +1,6 @@
 .welcome-wrapper{
     position: relative;
-    background: linear-gradient(to right, rgba(0,0,0,0.9),rgba(0,0,0,0.75),rgba(0,0,0,0.5)), url('./../../images/welcome.webp');
+    background: linear-gradient(to right, rgba(0,0,0,0.8),rgba(0,0,0,0.6)), url('./../../images/welcome.webp');
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
@@ -21,7 +21,7 @@
         }
         .description{
             font-size: 1.3rem;
-            width: 70%;
+            width: 60%;
             letter-spacing: 1px;
             line-height: 2rem;
             margin-top: 0.7rem;
