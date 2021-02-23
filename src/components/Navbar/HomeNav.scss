@@ -1,7 +1,7 @@
 .upper-nav-wrapper {
-    background: #212332;
+    background: #222831;
     color: #a2b2bb;
-    padding: 15px 0;
+    padding: 0.6rem 0;
     border-bottom: .5px solid #313347;
     z-index: 10;
   .upper-nav {
@@ -54,7 +54,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #212332;
+  background-color: #222831;
   .navbar {
     max-width: 1920px;
     margin: auto;
@@ -171,7 +171,7 @@
       @media screen and (max-width: 768px){
         z-index: 10;
         top: 5rem;
-        background-color: #212332;
+        background-color: #222831;
         display: flex;
         align-items: center;
         flex-direction: column;
