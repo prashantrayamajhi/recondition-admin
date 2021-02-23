@@ -15,27 +15,24 @@ interface CardProps {
 }
 
 export default function CardComponent(props: CardProps) {
-  console.log(props.thumbnail)
   return (
     <Link to='' className='card-link'>
-      <div>
-        <Card className='card-wrapper'>
-          <CardActionArea>
-            <CardMedia
-              className='img'
-              image={`http://localhost:8080/images/${props.thumbnail}`}
-            />
-            <CardContent className='title-wrapper' >
-              <Typography className='title' variant="h4" >
-                {props.title}
-              </Typography>
-              <Typography className='price' variant="h4">
-                Rs.{props.price}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card>
-      </div>
+      <Card className='card-wrapper'>
+        <CardActionArea>
+          <CardMedia
+            className='img'
+            image={`http://localhost:8080/images/${props.thumbnail}`}
+          />
+          <CardContent className='title-wrapper' >
+            <Typography className='title' variant="h4" >
+              {props.title}
+            </Typography>
+            <Typography className='price' variant="h4">
+              Rs.{props.price}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+      </Card>
     </Link>
   )
 }

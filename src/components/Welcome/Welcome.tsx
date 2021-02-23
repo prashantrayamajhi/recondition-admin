@@ -9,7 +9,7 @@ export default function Welcome() {
         <p className='welcome'>Welcome to</p>
         <h1>Sawari Motors</h1>
         <p className='description'>We are a reputed automobile organization, we provide one of the best automobile services in Kathmandu. </p>
-        <Link to='/#services' className='link' style={{ textDecoration:'none' }}><Button className='btn' variant='contained' color='primary'>Our Services</Button></Link>
+        <a href='#services' className='link' style={{ textDecoration:'none' }}><Button className='btn' variant='contained' color='primary'>Our Services</Button></a>
       </div>
     </div>
   )

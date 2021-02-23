@@ -5,7 +5,7 @@ textarea{
 
 .contact-section{
     background-color: #f7f7f7;
-    padding: 4rem 0;
+    padding: 5% 0;
     h2{
         text-align: center;
         font-size: 2.8rem;
@@ -19,11 +19,9 @@ textarea{
     }
     .contact-wrapper{
         display: flex;
-        //align-items: center;
         align-items: stretch;
         width: 95%;
-        margin: 3.5rem auto;
-        // margin-top: 1rem;
+        margin: 0 auto;
         .map{
             width: 100%;
             height: 100%;
@@ -52,8 +50,7 @@ textarea{
             font-size: 1.1rem;
         }
         .contact-wrapper{
-            flex-direction: column;
-            margin-top: 3.5rem;
+            flex-direction: column-reverse;
             .contact-details{
                 margin-top: 2rem;
             }

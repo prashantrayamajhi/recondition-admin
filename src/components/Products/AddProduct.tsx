@@ -127,6 +127,7 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
           setName('')
           setPrice('')
           setImage('')
+          setModel('')
           setOption('')
           setColor('')
           setKm('')
