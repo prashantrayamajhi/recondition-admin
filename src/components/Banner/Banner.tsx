@@ -7,7 +7,7 @@ export default function Banner() {
     <div className='banner'>
       <div className='banner-text'>
         <h1>We provide best automobile recondition service in kathmandu</h1>
-        <Link to='/products' className='link' style={{ textDecoration: 'none' }}><Button className='btn' variant='contained' color='primary'>Our Products</Button></Link>
+        <a href='#services' className='link' style={{ textDecoration: 'none' }}><Button className='btn' variant='contained' color='primary'>Our Services</Button></a>
       </div>
     </div>
   )
