@@ -14,7 +14,7 @@ export default function Navbar() {
 
   const history = useHistory()
 
-  const onLogout =() => {
+  const onLogout = () => {
     localStorage.removeItem('userId')
     localStorage.removeItem('accessToken')
     localStorage.removeItem('isAuthenticated')
@@ -30,7 +30,7 @@ export default function Navbar() {
     title: {
       flexGrow: 1,
     },
-    menu:{
+    menu: {
       color: 'black'
     }
   }))
@@ -40,24 +40,24 @@ export default function Navbar() {
   }
 
   const isAdmin = () => {
-    if(localStorage.getItem('role') === 'admin'){
+    if (localStorage.getItem('role') === 'admin') {
       return <Link to="/admin/users" className='link' onClick={() => { setIsResponsive(false) }}><Button className='link-btn' >Users</Button></Link>
     }
   }
   return (
     <AppBar position='static'>
       <Toolbar className='navbar'>
-        <Typography variant="h6" className={ classes.title }>
+        <Typography variant="h6" className={classes.title}>
           Admin Panel
         </Typography>
-        <div className={ `link-wrapper ${ isResponsive ? 'responsive' : '' }` }>
+        <div className={`link-wrapper ${isResponsive ? 'responsive' : ''}`}>
           <Link to="/admin/" className='link' onClick={() => { setIsResponsive(false) }}><Button className='link-btn'>Products</Button></Link>
-          <Link to="/admin/model" className='link' onClick={() => { setIsResponsive(false) }}><Button className='link-btn' >Model</Button></Link>
+          {/* <Link to="/admin/model" className='link' onClick={() => { setIsResponsive(false) }}><Button className='link-btn' >Model</Button></Link> */}
           {isAdmin()}
           <span className='link' onClick={() => { setIsResponsive(false) }}><Button className='link-btn' color="inherit" onClick={onLogout}>Logout</Button></span>
         </div>
         <IconButton edge="start" className='menu' aria-label="menu" onClick={() => { toggleResponsive() }}>
-          <MenuIcon style={{ color : isResponsive ? 'black' : 'white' }}/>
+          <MenuIcon style={{ color: isResponsive ? 'black' : 'white' }} />
         </IconButton>
       </Toolbar>
     </AppBar>

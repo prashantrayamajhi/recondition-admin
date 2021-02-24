@@ -52,7 +52,7 @@ export default function Contact() {
           </div>
           <div className='contact-form' onSubmit={onFormSubmit}>
             <h2>Contact Us</h2>
-            <p>Fell free to leave us a message</p>
+            <p>Feel free to leave us a message</p>
             <form className='contact'>
               <div className='input-wrapper'>
                 <TextField className='input' label='Email' id="outlined-basic" variant="outlined" value={email} required onChange={(e) => { handleInputChange(setEmail, e.target.value as string) }} />
