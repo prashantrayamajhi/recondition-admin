@@ -49,7 +49,7 @@ export default function Product(props: ProductProps) {
           <h2>{product?.name}</h2>
           <Typography variant='body1' color="primary">Rs.{product?.price}</Typography>
           <p className='description'>{product?.description}</p>
-          <table>
+          {/* <table>
             <thead>
               <tr>
                 <th>Price</th>
@@ -68,16 +68,13 @@ export default function Product(props: ProductProps) {
                 <td>{product?.option ? product?.option : 'N/A'}</td>
               </tr>
             </tbody>
-          </table>
-
-          {/* <div className='info-wrapper'>
-            <p className='description'>{product?.description}</p>
-            <Typography className='detail' variant='body1'>Price : <span>{product?.price}</span></Typography>
+          </table> */}
+          <div className='info-wrapper'>
             <Typography className='detail' variant='body1'>Model : <span>{product?.model}</span></Typography>
             <Typography className='detail' variant='body1'>Color : <span>{product?.color}</span></Typography>
-            <Typography className='detail' variant='body1'>K.M's : <span>{product?.km} km</span></Typography>
+            <Typography className='detail' variant='body1'>K.M. : <span>{product?.km} km</span></Typography>
             <Typography className='detail' variant='body1'>Option : <span>{product?.option ? product?.option : 'N/A'}</span></Typography>
-          </div> */}
+          </div>
         </div>
       </div>
       <Footer />

@@ -1,5 +1,6 @@
 import './Footer.scss'
-import { Map, Smartphone, Mail } from '@material-ui/icons'
+import { Map, Smartphone, Mail, Facebook, Instagram } from '@material-ui/icons'
+import { Link } from 'react-router-dom'
 
 export default function Footer() {
   const date = new Date().getFullYear()
@@ -13,13 +14,18 @@ export default function Footer() {
             qualified, experienced and we always thrive to provide the best
             service to our customers.
           </p>
+          <div className='social-wrapper'>
+            <Link to='' className='link'><Facebook className='icon' /></Link>
+            <Link to='' className='link'><Instagram className='icon' /></Link>
+            <Link to='' className='link'><Mail className='icon' /></Link>
+          </div>
         </div>
         <div className='more-info'>
           <p className='footer-heading'>Links</p>
           <ul>
             <li><a href='/#home'>Home</a></li>
             <li><a href='/#about'>About</a></li>
-            <li><a href='/#service'>Serivces</a></li>
+            <li><a href='/#services'>Serivces</a></li>
             <li><a href='/#testimonials'>Reviews</a></li>
             <li><a href='/#contact'>Contact</a></li>
           </ul>
