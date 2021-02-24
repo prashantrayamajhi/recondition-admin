@@ -1,6 +1,8 @@
 import './Testimonials.scss'
 import Carousel from 'react-multi-carousel'
+import Avatar from './../../images/avatar.jpg'
 import 'react-multi-carousel/lib/styles.css'
+import { Typography } from '@material-ui/core'
 
 export default function Testimonials() {
   const responsive = {
@@ -33,13 +35,18 @@ export default function Testimonials() {
         autoPlaySpeed={4000}
       >
         <div className='testimonial'>
-          <h3>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti dolor explicabo placeat commodi consequuntur dolores.</h3>
+          <img src={Avatar} alt='' />
+          <div className='text-wrapper'>
+            <h3>Great place to get your car repaired. They are honest, trusted, and have competitive pricing.</h3>
+          </div>
         </div>
         <div className='testimonial'>
-          <h3>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti dolor explicabo placeat commodi consequuntur dolores.</h3>
+          <img src={Avatar} alt='' />
+          <h3>They only fix what needs to be fixed and don’t try and up-sell you on unnecessary things.</h3>
         </div>
         <div className='testimonial'>
-          <h3>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti dolor explicabo placeat commodi consequuntur dolores.</h3>
+          <img src={Avatar} alt='' />
+          <h3>The price was pretty much what you’d expect, but it is worth it for the peace of mind.</h3>
         </div>
       </Carousel>
     </div>

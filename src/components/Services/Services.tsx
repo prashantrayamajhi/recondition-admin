@@ -1,6 +1,7 @@
 import Service from './Service'
 import './Service.scss'
 import { Build, DriveEta, LocalCarWash } from '@material-ui/icons'
+import { Button } from '@material-ui/core'
 
 const services = [
   {
@@ -35,6 +36,7 @@ export default function Services() {
       <div className='services'>
         {mappedData}
       </div>
+      <a href='/#contact' className='link'><Button className='btn' variant='contained' color='primary'>Contact us</Button></a>
     </section>
   )
 }

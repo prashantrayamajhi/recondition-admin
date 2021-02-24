@@ -81,18 +81,28 @@
             margin: 2rem auto;
             table{
                 thead{
-                    th{
-                        font-size: 0.9rem;
-                        padding: 0.5rem 0.3rem;
+                    tr{
+                        th{
+                            font-size: 0.8rem;
+                            padding: 0.5rem 0.3rem;
+                        }
                     }
                 }
                 tbody{
-                    td{
-                       font-size: 0.9rem; 
-                       padding: 0.5rem 0.3rem;
+                    tr{
+                        td{
+                           font-size: 0.8rem; 
+                           padding: 0.5rem 0.3rem;
+                        }
                     }
                 }
             }
         }
+    }
+}
+
+@media(max-width:768px){
+    .product-wrapper{
+        margin-top: 5rem;
     }
 }
