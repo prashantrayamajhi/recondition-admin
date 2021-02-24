@@ -1,28 +1,98 @@
+@import "~react-image-gallery/styles/scss/image-gallery.scss";
 .product-wrapper{
     display: flex;
-    margin-top: 3rem;
+    padding: 5% 0;
+    background-color: #f7f7f7;
     .image-wrapper{
         width: 50%;
-        padding: 0 2rem;
+        margin-left: 1.5rem;
         img{
             width: 100%;
         }
     }
     .details-wrapper{
-        padding: 0 2rem;
+        padding: 0 3rem;
         width: 50%;
         h2{
-            text-align: center;
             font-size: 2rem;
+            color: #222831;
         }
+        p{
+            font-size: 1.3rem;
+            margin-top: 0.5rem;
+        }
+        .description{
+            letter-spacing: 1px;
+            font-size: 1rem;
+            line-height: 2rem;
+            margin: 1.5rem 0;
+            margin-top: 1rem;
+        }
+        table{
+            border: 1px solid #222831;
+            width: 100%;
+            text-align: center;
+            thead{
+                th{
+                    font-size: 1rem;
+                    padding: 0.5rem;
+                    border: 1px solid #222831;
+                    color: #222831;
+                }
+            }
+            tbody{
+                td{
+                    font-size: 1rem;
+                    padding: 0.5rem;
+                    border: 1px solid #222831;
+                }
+            }
+        }
+        // .info-wrapper{
+        //     margin-top: 0.7rem;
+        //     padding-bottom: 1.3rem;
+        //     .detail{
+        //         font-size: 1.1rem;
+        //         font-weight: 700;
+        //         margin-bottom: 0.3rem;
+        //         letter-spacing: normal;
+        //         color: #102a42;
+        //         span{
+        //             font-weight: 500;
+        //             font-size: 1rem;
+        //             margin-left: 1rem;
+        //         }
+        //     }
+        // }
     }
-    .info-wrapper{
-        width: 70%;
-        margin: auto;
-        margin-top: 1.5rem;
-        display: flex;
-        justify-content: space-between;
-        border: 2px solid black;
-        padding: 1rem;
+}
+
+
+@media(max-width: 900px){
+    .product-wrapper{
+        flex-direction: column;
+        .image-wrapper{
+            width: 90%;
+            margin: auto;
+        }
+        .details-wrapper{
+            width: 90%;
+            padding: 0;
+            margin: 2rem auto;
+            table{
+                thead{
+                    th{
+                        font-size: 0.9rem;
+                        padding: 0.5rem 0.3rem;
+                    }
+                }
+                tbody{
+                    td{
+                       font-size: 0.9rem; 
+                       padding: 0.5rem 0.3rem;
+                    }
+                }
+            }
+        }
     }
 }

@@ -209,6 +209,7 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
             <input
               type='file'
               className='input'
+              name={image}
               required
               onChange={(e) => {
                 handleFileChange(e)

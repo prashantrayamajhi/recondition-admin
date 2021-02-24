@@ -8,15 +8,15 @@ import { Link } from 'react-router-dom'
 
 
 interface CardProps {
-    thumbnail: string,
-    title: string,
-    price: string,
-    id: number
+  thumbnail: string,
+  title: string,
+  price: string,
+  id: string | number
 }
 
 export default function CardComponent(props: CardProps) {
   return (
-    <Link to='' className='card-link'>
+    <Link to={`/product/${props.id}`} className='card-link'>
       <Card className='card-wrapper'>
         <CardActionArea>
           <CardMedia
