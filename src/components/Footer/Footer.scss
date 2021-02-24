@@ -12,9 +12,19 @@
     .about-us {
       width: 40%;
       padding: 0 30px;
-            .footer-heading {
+      .footer-heading {
         font-weight: 400;
         font-size: 2rem;
+      }
+      .social-wrapper{
+        display: flex;
+        width: 40%;
+        margin-top: 1rem;
+        .link{
+          color: #fff;
+        }
+
+        justify-content: space-between;
       }
       p {
         margin-top: 20px;

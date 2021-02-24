@@ -20,7 +20,7 @@ export default function Testimonials() {
     }
   }
   return (
-    <div className='testimonials-wrapper'>
+    <div className='testimonials-wrapper' id="testimonials">
       <h2>Testimonials</h2>
       <p>What our clients have to say about us.</p>
       <Carousel
