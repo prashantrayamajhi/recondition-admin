@@ -26,7 +26,7 @@ export default function LatestProducts() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await Axios.get('/api/v1/admin/products/limit/'+6)
+        const res = await Axios.get('/api/v1/admin/products/limit/' + 6)
         setProducts(res.data.data)
       } catch (err) {
         console.log(err)
@@ -36,7 +36,7 @@ export default function LatestProducts() {
   }, [])
 
   const mappedData = products.slice(0).reverse().map((product: ProductEntity, index: number) => {
-    return <div key={product._id} style={{ margin: '0 0.5rem' }}><Card  id={index} title={product.name} thumbnail={product.images[0]} price={product.price} /></div>
+    return <div key={index} style={{ margin: '0 0.7rem' }}><Card id={product._id} title={product.name} thumbnail={product.images[0]} price={product.price} /></div>
   })
   return (
     <>

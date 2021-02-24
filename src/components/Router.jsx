@@ -20,9 +20,9 @@ export default function RouterComponent() {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/products" exact component={HomeProducts} />
+          <Route path="/product/:id" exact component={Product} />
           <Route path="/admin/login" exact component={Login} />
           <PrivateRoute path="/admin/" exact component={Products} />
-          <PrivateRoute path="/product/:id" exact component={Product} />
           <PrivateRoute path="/admin/addProduct" exact component={AddProduct} />
           <PrivateRoute path="/admin/addProduct/update/:id" exact component={AddProduct} />
           <AdminRoute path="/admin/users" exact component={Users} />

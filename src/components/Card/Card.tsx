@@ -13,13 +13,13 @@ import { useState } from 'react'
 
 
 interface CardProps {
-    thumbnail : string,
-    title : string,
-    price : string,
-    id: string
+  thumbnail: string,
+  title: string,
+  price: string,
+  id: string
 }
 
-export default function CardComponent(cardObj : CardProps) {
+export default function CardComponent(cardObj: CardProps) {
   const [modal, setModal] = useState<boolean>(false)
 
   const toggleModal = () => {
@@ -39,15 +39,15 @@ export default function CardComponent(cardObj : CardProps) {
               {cardObj.title}
             </Typography>
             <Typography className='title' variant="h4">
-            Rs {cardObj.price}
+              Rs {cardObj.price}
             </Typography>
           </CardContent>
         </CardActionArea>
         <CardActions className='action-wrapper'>
-          <Link className='link' to={`/admin/product/${cardObj.id}`}><Button className='action-btn' size="small" variant='contained' color="primary">
-          More
+          <Link className='link' to={`/product/${cardObj.id}`}><Button className='action-btn' size="small" variant='contained' color="primary">
+            More
           </Button></Link>
-          <Link className='link' to={`/admin/addProduct/update/${cardObj.id}`}><Button className='action-btn' size="small" variant='contained' style={{ backgroundColor: 'green', color:'white' }}>
+          <Link className='link' to={`/admin/addProduct/update/${cardObj.id}`}><Button className='action-btn' size="small" variant='contained' style={{ backgroundColor: 'green', color: 'white' }}>
             <Edit className='icon' /> Edit
           </Button></Link>
           <Button className='action-btn' size="small" variant='contained' color="secondary" onClick={toggleModal}>
