@@ -1,7 +1,6 @@
 import './index.scss'
 import React, { useEffect, useState } from 'react'
 import Container from './../Container/Container'
-import { Button, InputLabel, MenuItem, Select, TextareaAutosize, TextField, Typography } from '@material-ui/core'
 import Navbar from './../Navbar/Navbar'
 import Axios from '../../api/server'
 import Alert from './../Alert/Alert'
@@ -11,6 +10,8 @@ import ProductEntity from '../../entity/ProductEntity'
 import MatchParamId from '../../entity/MatchParamId'
 import LocationSearch from '../../entity/LocationSearch'
 import { Color } from '../../entity/Color'
+import { Button, TextareaAutosize, TextField, Typography } from '@material-ui/core'
+import { CloudUpload } from '@material-ui/icons'
 
 export default function AddProduct(props: ProductEntity & MatchParamId & LocationSearch) {
 
@@ -31,14 +32,19 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
   const [severity, setSeverity] = useState<Color>('success')
   const [btnState, setBtnState] = useState<boolean>(false)
 
+  // handle input change
   const handleInputChange = (setFunction: Function, value: string) => {
     setFunction(value)
   }
 
+  // handle file change
   const handleFileChange = (e: any) => {
-    setImage(e.target.files)
+    let files = e.target.files
+    const fileArr = Array.prototype.slice.call(files)
+    setImage(fileArr)
   }
 
+  // authentication header
   const config = {
     headers: {
       Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
@@ -46,11 +52,16 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
     }
   }
 
+  // set the image state if we are updating a product
   useEffect(() => {
     const id = props.match.params.id
+    // store image objects
+    const imgArr : Array<object> = []
     const fetchData = async () => {
       try {
+        // request for the product with the 'id'
         const res = await Axios.get('/api/v1/admin/products/' + id, config)
+        // set the state with the returned data
         setName(res.data.data.name)
         setPrice(res.data.data.price)
         setModel(res.data.data.model)
@@ -58,23 +69,24 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
         setColor(res.data.data.color)
         setKm(res.data.data.km)
         setDescription(res.data.data.description)
-        setImage(res.data.data.image[0])
+        res.data.data.images.forEach((img: any) => {
+          imgArr.push({ name: img })
+        })
+        setImage(imgArr)
       } catch (err) {
         console.log(err)
       }
     }
     if (id) {
       setIsEdit(true)
-      fetchData().then()
+      fetchData()
     }
-
   }, [])
-
   useEffect(() => {
     const getUpdateData = async () => {
       try {
         const id = props.match.params.id
-        const res = await Axios.get('/api/v1/admin/products/' + id, config)
+        await Axios.get('/api/v1/admin/products/' + id, config)
       } catch (err) {
         console.log(err)
       }
@@ -92,12 +104,8 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
         console.log(err)
       }
     }
-    getModel().then()
+    getModel()
   }, [])
-
-  const mapModels = modelList.map((model: ModelEntity) => {
-    return <MenuItem key={model._id} value={model.name} selected>{model.name}</MenuItem>
-  })
 
   const onFormSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault()
@@ -106,8 +114,9 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
     formData.append('name', name)
     formData.append('price', price)
     if (image) {
-      for (const key of Object.keys(image)) {
-        formData.append('image', image[key])
+      for(let i=0; i<image.length; i++){
+        console.log(image[i])
+        formData.append('image', image[i])
       }
     }
     formData.append('model', model)
@@ -117,6 +126,7 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
     formData.append('description', description)
     try {
       if (isEdit) {
+        console.log(image)
         const res = await Axios.patch('/api/v1/admin/products/' + props.match.params.id, formData, config)
         if (res.status === 200) {
           history.push('/admin/')
@@ -146,6 +156,9 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
       setSeverity('error')
     }
   }
+  const removeImage = (img: string) => {
+    setImage(image.filter((x: any) => x !== img))
+  }
 
   return (
     <>
@@ -173,14 +186,6 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
                 handleInputChange(setModel, e.target.value as string)
               }} />
           </div>
-          {/* <div className='input-wrapper'>
-            <InputLabel id='model-label'>Model</InputLabel>
-            <Select value={model} labelId='model-label' className='input' required onChange={(e) => {
-              handleInputChange(setModel, e.target.value as string)
-            }}>
-              {mapModels}
-            </Select>
-          </div> */}
           <div className='input-wrapper'>
             <TextField className='input' label='Option' id='outlined-basic' variant='outlined' value={option}
               onChange={(e) => {
@@ -206,16 +211,26 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
               }} />
           </div>
           <div className='input-wrapper'>
-            <input
-              type='file'
-              className='input'
-              name={image}
-              required
-              onChange={(e) => {
-                handleFileChange(e)
-              }}
-              multiple
-            />
+            <label className='upload'>
+              <input
+                type='file'
+                className='input'
+                name={image}
+                onChange={(e) => {
+                  handleFileChange(e)
+                }}
+                multiple
+                hidden
+              />
+              <CloudUpload style={{ marginRight: '0.5rem' }} /> Upload
+            </label>
+            <div className='loaded-images'>
+              {
+                image ? image.map((img : any, index : number) => {
+                  return <p onClick={() => { removeImage(img) }} key={index}>{img.name}</p>
+                }) : ''
+              }
+            </div>
           </div>
           <div className='btn-wrapper'>
             <Button disabled={btnState} type='submit' className='btn' variant='contained' size='large'

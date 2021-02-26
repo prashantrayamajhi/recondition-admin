@@ -1,18 +1,19 @@
-import './index.scss'
-import Navbar from './../Navbar/Navbar'
+import './../index.scss'
+import HomeNav from './../../Navbar/HomeNav'
 import { useEffect, useState } from 'react'
-import Axios from '../../api/server'
-import './Product.scss'
-import ProductEntity from '../../entity/ProductEntity'
+import Axios from '../../../api/server'
+import './../Product.scss'
+import ProductEntity from '../../../entity/ProductEntity'
 import ImageGallery from 'react-image-gallery'
 import { Typography } from '@material-ui/core'
+import Footer from './../../Footer/Footer'
 
 interface ProductProps {
-  match: {
-    params: {
-      id: string
+    match: {
+        params: {
+            id: string
+        }
     }
-  }
 }
 
 const images: Array<any> = []
@@ -39,7 +40,7 @@ export default function Product(props: ProductProps) {
 
   return (
     <>
-      <Navbar />
+      <HomeNav />
       <div className='product-wrapper'>
         <div className='image-wrapper'>
           <ImageGallery items={images} autoPlay={false} />
@@ -56,6 +57,6 @@ export default function Product(props: ProductProps) {
           </div>
         </div>
       </div>
+      <Footer />
     </>
-  )
-}
+  )}
