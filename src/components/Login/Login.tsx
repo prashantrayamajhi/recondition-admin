@@ -52,7 +52,7 @@ export default function Login() {
       <Alert openAlert={openAlert} setOpenAlert={setOpenAlert} message={message} severity={severity} />
       <Container>
         <form autoComplete='off' onSubmit={onFormSubmit} className='login-wrapper'>
-          <Typography className='heading' color='primary' variant='h2'>Admin Login</Typography>
+          <Typography className='heading' color='primary' variant='h3' >Admin Login</Typography>
           <div className='input-wrapper'>
             <TextField type='email' className='input' label='Email' variant='outlined' value={email} onChange={(e) => {
               handleInputChange(setEmail, e.target.value as string)
