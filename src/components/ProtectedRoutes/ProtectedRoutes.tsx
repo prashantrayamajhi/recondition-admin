@@ -1,22 +1,17 @@
 import { Route, Redirect } from 'react-router-dom'
-import jwt from 'jsonwebtoken'
+import jwt_decode from 'jwt-decode'
 //TODO remove any
-
 const PrivateRoute = ({ component: Component, ...rest }: any) => {
   const token: string = localStorage.getItem('accessToken')!
-  if (localStorage.getItem('accessToken') && localStorage.getItem('isAuthenticated')
-    && localStorage.getItem('role') && localStorage.getItem('userId')
-  ) {
-    jwt.verify(token, 'waschghh@rerfhs#fhfhf^vhs&*987rt1m8iu', function (err:any, decode:any) {
-      if (err) {
-        localStorage.removeItem('accessToken')
-        localStorage.removeItem('role')
-        localStorage.removeItem('isAuthenticated')
-        localStorage.removeItem('userId')
-      }
-    })
-  }
+  const decoded : any= jwt_decode(token)
+  const current_time = new Date().getTime() / 1000
 
+  if (current_time > decoded.exp) {
+    localStorage.removeItem('accessToken')
+    localStorage.removeItem('role')
+    localStorage.removeItem('isAuthenticated')
+    localStorage.removeItem('userId')
+  }
   return (
     <Route {...rest} render={props => (
       localStorage.getItem('userId') && localStorage.getItem('isAuthenticated') && localStorage.getItem('accessToken')
