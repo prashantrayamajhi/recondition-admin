@@ -56,7 +56,7 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
   useEffect(() => {
     const id = props.match.params.id
     // store image objects
-    const imgArr : Array<object> = []
+    const imgArr: Array<object> = []
     const fetchData = async () => {
       try {
         // request for the product with the 'id'
@@ -114,7 +114,7 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
     formData.append('name', name)
     formData.append('price', price)
     if (image) {
-      for(let i=0; i<image.length; i++){
+      for (let i = 0; i < image.length; i++) {
         console.log(image[i])
         formData.append('image', image[i])
       }
@@ -126,8 +126,7 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
     formData.append('description', description)
     try {
       if (isEdit) {
-        console.log(image)
-        const res = await Axios.patch('/api/v1/admin/products/' + props.match.params.id, formData, config)
+        const res = await Axios.patch(`/api/v1/admin/products/${props.match.params.id}`, formData, config)
         if (res.status === 200) {
           history.push('/admin/')
         }
@@ -226,11 +225,26 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
             </label>
             <div className='loaded-images'>
               {
-                image ? image.map((img : any, index : number) => {
-                  return <p onClick={() => { removeImage(img) }} key={index}>{img.name}</p>
+                image ? image.map((img: any, index: number) => {
+                  return <p onClick={() => {
+                    removeImage(img)
+                  }} key={index}>{img.name}</p>
                 }) : ''
               }
             </div>
+
+            <div className='loaded-images' style={{ display: 'flex', flexWrap: 'wrap' }}>
+              {
+                image ? image.map((img: any, index: number) => {
+                  return <img
+                    style={{ width: '20rem', height: 'auto' }}
+                    onClick={() => {
+                      removeImage(img)
+                    }} key={index} src={`http://localhost:8080/images/${img.name}`} alt={'product'} />
+                }) : ''
+              }
+            </div>
+
           </div>
           <div className='btn-wrapper'>
             <Button disabled={btnState} type='submit' className='btn' variant='contained' size='large'
