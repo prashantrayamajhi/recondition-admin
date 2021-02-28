@@ -20,11 +20,11 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
   const [image, setImage] = useState<any>([])
+  const [editImage, setEditImage] = useState<any>([])
   const [model, setModel] = useState('')
   const [option, setOption] = useState('')
   const [color, setColor] = useState('')
   const [km, setKm] = useState('')
-  const [modelList, setModelList] = useState<ModelEntity[]>([])
   const [description, setDescription] = useState('')
   const [isEdit, setIsEdit] = useState<boolean>(false)
   const [openAlert, setOpenAlert] = useState<boolean>(false)
@@ -70,9 +70,9 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
         setKm(res.data.data.km)
         setDescription(res.data.data.description)
         res.data.data.images.forEach((img: any) => {
-          imgArr.push({ name: img })
+          imgArr.push(img)
         })
-        setImage(imgArr)
+        setEditImage(imgArr)
       } catch (err) {
         console.log(err)
       }
@@ -81,30 +81,6 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
       setIsEdit(true)
       fetchData()
     }
-  }, [])
-  useEffect(() => {
-    const getUpdateData = async () => {
-      try {
-        const id = props.match.params.id
-        await Axios.get('/api/v1/admin/products/' + id, config)
-      } catch (err) {
-        console.log(err)
-      }
-    }
-
-    if (props.location.search) {
-      setIsEdit(true)
-      getUpdateData().then()
-    }
-    const getModel = async () => {
-      try {
-        const res = await Axios.get('/api/v1/admin/models', config)
-        setModelList(res.data.data)
-      } catch (err) {
-        console.log(err)
-      }
-    }
-    getModel()
   }, [])
 
   const onFormSubmit = async (e: React.SyntheticEvent) => {
@@ -115,10 +91,10 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
     formData.append('price', price)
     if (image) {
       for (let i = 0; i < image.length; i++) {
-        console.log(image[i])
         formData.append('image', image[i])
       }
     }
+    formData.append('editImage', editImage)
     formData.append('model', model)
     formData.append('option', option)
     formData.append('color', color)
@@ -156,7 +132,7 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
     }
   }
   const removeImage = (img: string) => {
-    setImage(image.filter((x: any) => x !== img))
+    setEditImage(editImage.filter((x: any) => x !== img))
   }
 
   return (
@@ -235,12 +211,12 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
 
             <div className='loaded-images' style={{ display: 'flex', flexWrap: 'wrap' }}>
               {
-                image ? image.map((img: any, index: number) => {
+                editImage ? editImage.map((img: any, index: number) => {
                   return <img
-                    style={{ width: '20rem', height: 'auto' }}
+                    style={{ width: '20rem', height: 'auto', margin: '1rem', cursor:'pointer' }}
                     onClick={() => {
                       removeImage(img)
-                    }} key={index} src={`http://localhost:8080/images/${img.name}`} alt={'product'} />
+                    }} key={index} src={`http://localhost:8080/images/${img}`} alt={'product'} />
                 }) : ''
               }
             </div>
