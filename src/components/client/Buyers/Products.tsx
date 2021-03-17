@@ -23,7 +23,7 @@ export default function Product() {
 
   const mappedData = products.slice(0).reverse().map((product: ProductEntity, index: number) => {
     return <Card key={index} id={product._id} title={product.name} thumbnail={product.images[0]}
-      price={product.price} />
+      price={product.price} color={product.color} km={product.km} model={product.model}  />
   })
 
   return (
