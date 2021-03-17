@@ -36,7 +36,7 @@ export default function LatestProducts() {
   }, [])
 
   const mappedData = products.slice(0).reverse().map((product: ProductEntity, index: number) => {
-    return <div key={index} style={{ width: '90%', margin: 'auto' }}><Card id={product._id} title={product.name} thumbnail={product.images[0]} price={product.price} /></div>
+    return <div key={index} style={{ width: '90%', margin: 'auto' }}><Card id={product._id} title={product.name} thumbnail={product.images[0]} price={product.price} color={product.color} km={product.km} model={product.model} /></div>
   })
   return (
     <>

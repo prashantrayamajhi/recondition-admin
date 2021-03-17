@@ -1,38 +1,32 @@
 import './Card.scss'
-import Card from '@material-ui/core/Card'
-import CardActionArea from '@material-ui/core/CardActionArea'
-import CardContent from '@material-ui/core/CardContent'
-import CardMedia from '@material-ui/core/CardMedia'
-import Typography from '@material-ui/core/Typography'
 import { Link } from 'react-router-dom'
+import { FavoriteBorder } from '@material-ui/icons'
 
-
-interface CardProps {
+interface CardInterface{
   thumbnail: string,
   title: string,
   price: string,
-  id: string | number
+  id: string,
+  color: string,
+  model: string,
+  km: string
 }
 
-export default function CardComponent(props: CardProps) {
+function Card(props: CardInterface) {
+  console.log(props.thumbnail)
   return (
-    <Link to={`/product/${props.id}`} className='card-link'>
-      <Card className='card-wrapper'>
-        <CardActionArea>
-          <CardMedia
-            className='img'
-            image={`http://localhost:8080/images/${props.thumbnail}`}
-          />
-          <CardContent className='title-wrapper' >
-            <Typography className='title' variant="h4" >
-              {props.title}
-            </Typography>
-            <Typography className='price' variant="h4">
-              Rs.{props.price}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
-    </Link>
+    <div className={'card'}>
+      <img src={`http://localhost:8080/images/${props.thumbnail}`} alt={''} />
+      <div className={'card-title'}>
+        <Link to={`/product/${props.id}`} className={'link'}><h3>{props.title}</h3></Link>
+      </div>
+      <p className='price'>Rs.{props.price}</p>
+      <div className={'card-details'}>
+        <p>{props.model} &bull; {props.color} &bull; {props.km} km</p>
+      </div>
+      <Link to={`/product/${props.id}`} className={'card-link'}><p>View Details</p></Link>
+    </div>
   )
 }
+
+export default Card
