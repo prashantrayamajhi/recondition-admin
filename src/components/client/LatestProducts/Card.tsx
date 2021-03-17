@@ -1,6 +1,5 @@
 import './Card.scss'
 import { Link } from 'react-router-dom'
-import { FavoriteBorder } from '@material-ui/icons'
 
 interface CardInterface{
   thumbnail: string,
@@ -13,7 +12,6 @@ interface CardInterface{
 }
 
 function Card(props: CardInterface) {
-  console.log(props.thumbnail)
   return (
     <div className={'card'}>
       <img src={`http://localhost:8080/images/${props.thumbnail}`} alt={''} />
