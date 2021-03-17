@@ -3,6 +3,7 @@ import Welcome from '../Welcome/Welcome'
 import About from '../About/About'
 import Banner from '../Banner/Banner'
 import Services from '../Services/Services'
+import Counter from '../Counter/Counter'
 import Testimonials from '../Testimonials/Testimonials'
 import LatestProduct from '../LatestProducts/LatestProducts'
 import Contact from '../Contact/Contact'
@@ -17,6 +18,7 @@ export default function Home() {
       <About />
       <Banner />
       <Services />
+      <Counter />
       <Testimonials />
       <Contact />
       <Footer />
