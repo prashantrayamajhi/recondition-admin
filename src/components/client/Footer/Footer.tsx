@@ -15,9 +15,9 @@ export default function Footer() {
             service to our customers.
           </p>
           <div className='social-wrapper'>
-            <Link to='' className='link'><Facebook className='icon' /></Link>
-            <Link to='' className='link'><Instagram className='icon' /></Link>
-            <Link to='' className='link'><Mail className='icon' /></Link>
+            <a href='https://www.facebook.com/Sawari-Motors-pvtltd-112970613809540/' target="_blank" className='link'><Facebook className='icon' /></a>
+            <a href='' className='link' target="_blank"><Instagram className='icon' /></a>
+            <a href='' className='link' target="_blank"><Mail className='icon' /></a>
           </div>
         </div>
         <div className='more-info'>
@@ -38,7 +38,7 @@ export default function Footer() {
           </div>
           <div className='details'>
             <Smartphone color='inherit' />
-            <p>+9779876543211</p>
+            <p>+977-9851099390</p>
           </div>
           <div className='details'>
             <Mail color='inherit' />
