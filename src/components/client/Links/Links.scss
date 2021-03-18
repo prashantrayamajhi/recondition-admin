@@ -1,0 +1,36 @@
+.links-wrapper {
+  position: fixed;
+  bottom: 3%;
+  right: 1.8%;
+  z-index: 5;
+  .links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+    .link {
+      font-size: 2.8rem;
+      fill: white;
+      background-color: #5364cc;
+      padding: 0.5rem;
+      border-radius: 50%;
+      cursor: pointer;
+      margin-bottom: 1.5rem;
+      transition: 0.5s all ease-in !important;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+  .links.open {
+    display: flex;
+  }
+  .chat {
+    font-size: 3.8rem;
+    fill: white;
+    background-color: #5364cc;
+    padding: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}

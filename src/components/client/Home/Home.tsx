@@ -7,12 +7,14 @@ import Counter from '../Counter/Counter'
 import Testimonials from '../Testimonials/Testimonials'
 import LatestProduct from '../LatestProducts/LatestProducts'
 import Contact from '../Contact/Contact'
+import Links from '../Links/Links'
 import Footer from '../Footer/Footer'
 
 export default function Home() {
   return (
     <>
       <Navbar />
+      <Links />
       <Welcome />
       <LatestProduct />
       <About />
