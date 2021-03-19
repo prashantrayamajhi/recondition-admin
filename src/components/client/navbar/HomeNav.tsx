@@ -22,9 +22,9 @@ export default function HomeNav() {
             <div className='left-item'><Timer className='icon' /><span>Sun-Fri: 10:00-6:00</span></div>
           </div>
           <div className='right'>
-            <a className='link' href='https://www.facebook.com/Sawari-Motors-pvtltd-112970613809540/' target="_blank"><Facebook className='icon' /></a>
-            <a className='link' href='' target="_blank"><Instagram className='icon' /></a>
-            <a className='link' href='' target="_blank"><Mail className='icon' /></a>
+            <a className='link' href='https://www.facebook.com/Sawari-Motors-pvtltd-112970613809540/' rel="noreferrer" target="_blank"><Facebook className='icon' /></a>
+            <a className='link' href='/' target="_blank" rel="noreferrer"><Instagram className='icon' /></a>
+            <a className='link' href='/' target="_blank" rel="noreferrer"><Mail className='icon' /></a>
           </div>
         </div>
       </div>

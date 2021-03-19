@@ -1,6 +1,5 @@
 import './Footer.scss'
 import { Map, Smartphone, Mail, Facebook, Instagram } from '@material-ui/icons'
-import { Link } from 'react-router-dom'
 
 export default function Footer() {
   const date = new Date().getFullYear()
@@ -15,9 +14,9 @@ export default function Footer() {
             service to our customers.
           </p>
           <div className='social-wrapper'>
-            <a href='https://www.facebook.com/Sawari-Motors-pvtltd-112970613809540/' target="_blank" className='link'><Facebook className='icon' /></a>
-            <a href='' className='link' target="_blank"><Instagram className='icon' /></a>
-            <a href='' className='link' target="_blank"><Mail className='icon' /></a>
+            <a href='https://www.facebook.com/Sawari-Motors-pvtltd-112970613809540/' rel="noreferrer" target="_blank" className='link'><Facebook className='icon' /></a>
+            <a href='/' className='link' target="_blank" rel="noreferrer"><Instagram className='icon' /></a>
+            <a href='/' className='link' target="_blank" rel="noreferrer"><Mail className='icon' /></a>
           </div>
         </div>
         <div className='more-info'>
