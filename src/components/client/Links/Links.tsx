@@ -7,9 +7,9 @@ function Links() {
   return (
     <div className='links-wrapper'>
       <div className={`links ${isOpen ? 'open' : ''}`}>
-        <a href="https://www.facebook.com/Sawari-Motors-pvtltd-112970613809540/" target="_blank" ><Facebook className='link' /></a>
-        <a href="" target="_blank"><Instagram className='link' /></a>
-        <a href="" target="_blank"><Mail className='link' /></a>
+        <a href="https://www.facebook.com/Sawari-Motors-pvtltd-112970613809540/" rel="noreferrer" target="_blank" ><Facebook className='link' /></a>
+        <a href="/" target="_blank" rel="noreferrer"><Instagram className='link' /></a>
+        <a href="/" target="_blank" rel="noreferrer"><Mail className='link' /></a>
       </div>
       <ChatBubbleOutline className='chat' onClick={() => {setIsOpen(prev => !prev)}} />
     </div>

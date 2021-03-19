@@ -20,6 +20,7 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
   const [image, setImage] = useState<any>([])
+  const [displayImage, setDisplayImage] = useState<any>([])
   const [editImage, setEditImage] = useState<any>([])
   const [model, setModel] = useState('')
   const [option, setOption] = useState('')
@@ -39,6 +40,12 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
 
   // handle file change
   const handleFileChange = (e: any) => {
+    const images = e.target.files
+    const url = []
+    for(let i=0; i< images.length; i++){
+      url.push(URL.createObjectURL(images[i]))
+    }
+    setDisplayImage(url)
     let files = e.target.files
     const fileArr = Array.prototype.slice.call(files)
     setImage(fileArr)
@@ -112,6 +119,7 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
           setName('')
           setPrice('')
           setImage('')
+          setDisplayImage('')
           setModel('')
           setOption('')
           setColor('')
@@ -132,6 +140,9 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
     }
   }
   const removeImage = (img: string) => {
+    const filterImg = image[displayImage.indexOf(img)]
+    setImage(image.filter((x: any) => x !== filterImg))
+    setDisplayImage(displayImage.filter((x: any) => x !== img))
     setEditImage(editImage.filter((x: any) => x !== img))
   }
 
@@ -199,12 +210,14 @@ export default function AddProduct(props: ProductEntity & MatchParamId & Locatio
               />
               <CloudUpload style={{ marginRight: '0.5rem' }} /> Upload
             </label>
-            <div className='loaded-images'>
+            <div className='loaded-images' style={{ display: 'flex', alignItems:'center', justifyContent: 'space-evenly', flexWrap: 'wrap' }}>
               {
-                image ? image.map((img: any, index: number) => {
-                  return <p onClick={() => {
-                    removeImage(img)
-                  }} key={index}>{img.name}</p>
+                displayImage ? displayImage.map((img: any, index: number) => {
+                  return<img
+                    style={{ width: '18rem', height: 'auto', margin: '1rem', cursor:'pointer' }}
+                    onClick={() => {
+                      removeImage(img)
+                    }} key={index} src={img} alt={'product'} />
                 }) : ''
               }
             </div>
