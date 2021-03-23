@@ -8,19 +8,19 @@ const services = [
     id: 1,
     icon: <DriveEta className='icon' color='primary' />,
     title: 'Sell & Exchange Cars',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil recusandae minus at quasi, consequatur delectus.'
+    description: 'Buying and selling of used cars could be a difficult task, but don\'t worry, we are here to help you shorten the hassle.'
   },
   {
     id: 2,
     icon: <Build className='icon' color='primary' />,
     title: 'Recondition Cars',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil recusandae minus at quasi, consequatur delectus.'
+    description: 'Our expert and experienced staffs will recondition your car to make it look brand new!'
   },
   {
     id: 3,
     icon: <LocalCarWash className='icon' color='primary' />,
     title: 'Car Wash',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil recusandae minus at quasi, consequatur delectus.'
+    description: 'We provide excellent car wash service at any hour for a very reasonable price. '
   }
 ]
 
